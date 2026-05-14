@@ -462,7 +462,7 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
 
     # ── ANALYZE ───────────────────────────────────────────────────────────────
     sentiment_results = []
-    if mode in ("analyze", "full", "incremental"):
+    if mode in ("analyze", "full", "incremental", "report"):
         if not raw_posts:
             raw_posts = _load_raw(state_mgr, baseline_start, current_end)
 
@@ -511,7 +511,9 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
             "text": r.text,
             "sentiment": r.sentiment,
             "timestamp": r.timestamp,
-        } for r in sentiment_results])
+        } for r in sentiment_results]) if sentiment_results else pd.DataFrame(
+            columns=["group_id", "text", "sentiment", "timestamp"]
+        )
         topics_by_group: dict = {}
         for group_id in targets["groups"]:
             g = df_all[df_all["group_id"] == group_id]
