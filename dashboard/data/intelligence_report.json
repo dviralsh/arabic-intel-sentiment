@@ -1,0 +1,288 @@
+{
+  "meta": {
+    "generated_at": "2026-05-14T10:00:00+00:00",
+    "baseline_period": { "start": "2024-01-01T00:00:00+00:00", "end": "2024-12-31T23:59:59+00:00", "label": "2024 Baseline" },
+    "current_period": { "start": "2025-01-01T00:00:00+00:00", "end": "2026-05-14T00:00:00+00:00", "label": "Current (2025–2026)" },
+    "total_posts_analyzed": 1400,
+    "groups": ["hezbollah", "irgc_iran", "houthis", "hamas_pij"]
+  },
+  "summary": {
+    "total_posts": 1400,
+    "platforms": { "telegram": 820, "twitter": 580 },
+    "groups": {
+      "hezbollah": {
+        "display_name": "Hezbollah",
+        "color": "#FFD700",
+        "post_count": 350,
+        "avg_sentiment_score": -0.312,
+        "positive_pct": 21.4,
+        "negative_pct": 64.3,
+        "neutral_pct": 14.3,
+        "platforms": { "telegram": 210, "twitter": 140 }
+      },
+      "irgc_iran": {
+        "display_name": "Iran / IRGC",
+        "color": "#CC0000",
+        "post_count": 350,
+        "avg_sentiment_score": -0.418,
+        "positive_pct": 18.6,
+        "negative_pct": 70.0,
+        "neutral_pct": 11.4,
+        "platforms": { "telegram": 200, "twitter": 150 }
+      },
+      "houthis": {
+        "display_name": "Houthis / Ansar Allah",
+        "color": "#006400",
+        "post_count": 350,
+        "avg_sentiment_score": -0.287,
+        "positive_pct": 24.3,
+        "negative_pct": 61.4,
+        "neutral_pct": 14.3,
+        "platforms": { "telegram": 220, "twitter": 130 }
+      },
+      "hamas_pij": {
+        "display_name": "Hamas / PIJ",
+        "color": "#2F4F4F",
+        "post_count": 350,
+        "avg_sentiment_score": -0.503,
+        "positive_pct": 15.7,
+        "negative_pct": 77.1,
+        "neutral_pct": 7.2,
+        "platforms": { "telegram": 190, "twitter": 160 }
+      }
+    },
+    "top_assessments": [
+      {
+        "group": "Hamas / PIJ",
+        "theme": "overall",
+        "theme_label": "Overall Sentiment",
+        "narrative": "Hamas / PIJ overall sentiment has significantly deteriorated compared to the 2024 baseline period (Δ -28.4 pp; score +0.12 → -0.50). Negative content share rose from 38.2% to 77.1%, while positive content fell from 48.3% to 15.7%. This indicates increased internal stress, operational difficulties, or declining public support within monitored channels.",
+        "delta_pct": -28.4,
+        "direction": "decrease",
+        "confidence": "high",
+        "magnitude": "significant"
+      },
+      {
+        "group": "Iran / IRGC",
+        "theme": "civilian_support",
+        "theme_label": "Civilian Support",
+        "narrative": "Iran / IRGC civilian support sentiment has significantly deteriorated compared to the 2024 baseline period (Δ -24.1 pp; score -0.08 → -0.42). Negative content share rose from 41.0% to 70.0%, indicating heightened popular discontent, protest activity, and economic frustration visible in monitored channels.",
+        "delta_pct": -24.1,
+        "direction": "decrease",
+        "confidence": "high",
+        "magnitude": "significant"
+      },
+      {
+        "group": "Hezbollah",
+        "theme": "military_morale",
+        "theme_label": "Military Morale",
+        "narrative": "Hezbollah military morale sentiment has moderately deteriorated compared to the 2024 baseline period (Δ -18.7 pp; score +0.08 → -0.31). Negative content share rose from 32.0% to 64.3%. This indicates increased internal stress following Israeli operations and leadership losses.",
+        "delta_pct": -18.7,
+        "direction": "decrease",
+        "confidence": "high",
+        "magnitude": "moderate"
+      },
+      {
+        "group": "Houthis / Ansar Allah",
+        "theme": "economic_hardship",
+        "theme_label": "Economic Pressure",
+        "narrative": "Houthi economic hardship rhetoric has moderately increased compared to 2024 baseline (Δ -15.2 pp sentiment). Humanitarian crisis narratives dominate current content, signaling growing civilian pressure on the movement despite operational activity claims.",
+        "delta_pct": -15.2,
+        "direction": "decrease",
+        "confidence": "medium",
+        "magnitude": "moderate"
+      },
+      {
+        "group": "Iran / IRGC",
+        "theme": "economic_hardship",
+        "theme_label": "Economic Pressure",
+        "narrative": "Iranian economic distress content has significantly increased vs 2024. Inflation, sanctions, and protests against government spending dominate civilian-adjacent channels, suggesting widening gap between regime rhetoric and public sentiment.",
+        "delta_pct": -21.3,
+        "direction": "decrease",
+        "confidence": "high",
+        "magnitude": "significant"
+      }
+    ]
+  },
+  "assessments": [
+    {
+      "group_id": "hamas_pij", "group_display_name": "Hamas / PIJ",
+      "theme": "overall", "theme_label": "Overall Sentiment",
+      "direction": "decrease", "magnitude": "significant", "confidence": "high",
+      "delta_pct": -28.4, "baseline_score": 0.12, "current_score": -0.503,
+      "narrative": "Hamas / PIJ overall sentiment has significantly deteriorated compared to the 2024 baseline period (Δ -28.4 pp; score +0.12 → -0.50). Negative content share rose from 38.2% to 77.1%, while positive content fell from 48.3% to 15.7%. This indicates increased internal stress, operational difficulties, or declining public support within monitored channels.",
+      "evidence": [
+        { "post_id": "demo_1", "platform": "telegram", "source": "qassam_arabic", "text": "مجزرة جديدة في غزة، عشرات الشهداء من الأطفال والنساء في قصف وحشي على المخيمات", "sentiment": "negative", "confidence": 0.94, "timestamp": "2026-03-15T14:22:00+00:00", "themes": ["military_operations"] },
+        { "post_id": "demo_2", "platform": "twitter", "source": "@hamasinfo", "text": "المستشفيات في غزة تنهار تحت وطأة القصف الإسرائيلي المتواصل، والعالم يتفرج", "sentiment": "negative", "confidence": 0.91, "timestamp": "2026-02-28T09:15:00+00:00", "themes": ["military_operations", "civilian_support"] },
+        { "post_id": "demo_3", "platform": "telegram", "source": "gaza_resistance", "text": "أهالي غزة يصرخون: أين المساعدات والغذاء والدواء؟ نموت جوعاً تحت الحصار", "sentiment": "negative", "confidence": 0.89, "timestamp": "2026-01-10T16:45:00+00:00", "themes": ["economic_hardship", "civilian_support"] }
+      ],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    },
+    {
+      "group_id": "irgc_iran", "group_display_name": "Iran / IRGC",
+      "theme": "civilian_support", "theme_label": "Civilian Support",
+      "direction": "decrease", "magnitude": "significant", "confidence": "high",
+      "delta_pct": -24.1, "baseline_score": -0.08, "current_score": -0.418,
+      "narrative": "Iran / IRGC civilian support sentiment has significantly deteriorated compared to the 2024 baseline period (Δ -24.1 pp; score -0.08 → -0.42). Negative content share rose from 41.0% to 70.0%, indicating heightened popular discontent, protest activity, and economic frustration visible in monitored channels.",
+      "evidence": [
+        { "post_id": "demo_4", "platform": "twitter", "source": "@iran_citizen", "text": "الاحتجاجات تتواصل في طهران وعدة مدن إيرانية احتجاجاً على غلاء المعيشة والفساد الحكومي", "sentiment": "negative", "confidence": 0.92, "timestamp": "2026-04-20T11:30:00+00:00", "themes": ["civilian_support", "economic_hardship"] },
+        { "post_id": "demo_5", "platform": "telegram", "source": "iran_arabic_news", "text": "مواطنون إيرانيون: نعاني من الفقر بينما تُصرف أموالنا على حروب خارجية لا تعنينا", "sentiment": "negative", "confidence": 0.88, "timestamp": "2026-03-05T08:00:00+00:00", "themes": ["civilian_support", "economic_hardship"] }
+      ],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    },
+    {
+      "group_id": "hezbollah", "group_display_name": "Hezbollah",
+      "theme": "military_morale", "theme_label": "Military Morale",
+      "direction": "decrease", "magnitude": "moderate", "confidence": "high",
+      "delta_pct": -18.7, "baseline_score": 0.08, "current_score": -0.312,
+      "narrative": "Hezbollah military morale sentiment has moderately deteriorated compared to the 2024 baseline period (Δ -18.7 pp; score +0.08 → -0.31). Negative content share rose from 32.0% to 64.3%. This indicates increased internal stress following Israeli operations and leadership losses.",
+      "evidence": [
+        { "post_id": "demo_6", "platform": "telegram", "source": "almanar_news", "text": "خسائر فادحة في صفوف المقاومة، الشهداء بالعشرات في المواجهات الأخيرة مع العدو الصهيوني", "sentiment": "negative", "confidence": 0.87, "timestamp": "2026-02-14T19:00:00+00:00", "themes": ["military_morale", "military_operations"] }
+      ],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    },
+    {
+      "group_id": "houthis", "group_display_name": "Houthis / Ansar Allah",
+      "theme": "economic_hardship", "theme_label": "Economic Pressure",
+      "direction": "decrease", "magnitude": "moderate", "confidence": "medium",
+      "delta_pct": -15.2, "baseline_score": -0.05, "current_score": -0.287,
+      "narrative": "Houthi economic hardship rhetoric has moderately increased compared to 2024 baseline (Δ -15.2 pp sentiment). Humanitarian crisis narratives dominate current content, signaling growing civilian pressure on the movement despite operational activity claims.",
+      "evidence": [
+        { "post_id": "demo_7", "platform": "telegram", "source": "almasirah_net", "text": "الوضع الإنساني في اليمن يصل إلى حافة الانهيار، ملايين يعانون من المجاعة والأمراض", "sentiment": "negative", "confidence": 0.91, "timestamp": "2026-03-22T12:00:00+00:00", "themes": ["economic_hardship", "civilian_support"] }
+      ],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    },
+    {
+      "group_id": "irgc_iran", "group_display_name": "Iran / IRGC",
+      "theme": "economic_hardship", "theme_label": "Economic Pressure",
+      "direction": "decrease", "magnitude": "significant", "confidence": "high",
+      "delta_pct": -21.3, "baseline_score": -0.09, "current_score": -0.418,
+      "narrative": "Iranian economic distress content has significantly increased vs 2024. Inflation, sanctions, and protests against government spending dominate civilian-adjacent channels, suggesting widening gap between regime rhetoric and public sentiment.",
+      "evidence": [
+        { "post_id": "demo_8", "platform": "twitter", "source": "@tasnimnews_ar", "text": "العقوبات الأمريكية تخنق الاقتصاد الإيراني، البطالة ترتفع لمستويات قياسية والريال ينهار", "sentiment": "negative", "confidence": 0.93, "timestamp": "2026-04-01T10:00:00+00:00", "themes": ["economic_hardship"] }
+      ],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    },
+    {
+      "group_id": "hezbollah", "group_display_name": "Hezbollah",
+      "theme": "leadership_trust", "theme_label": "Leadership Trust",
+      "direction": "decrease", "magnitude": "slight", "confidence": "medium",
+      "delta_pct": -8.3, "baseline_score": 0.15, "current_score": -0.02,
+      "narrative": "Hezbollah leadership trust sentiment has slightly deteriorated vs 2024 (Δ -8.3 pp). Subtle criticism of command decisions and questions about post-war reconstruction accountability are emerging in monitored channels.",
+      "evidence": [],
+      "timestamp": "2026-05-14T10:00:00+00:00"
+    }
+  ],
+  "timeline": {
+    "hezbollah": [
+      { "month": "2024-01", "avg_sentiment": 0.12, "post_count": 18, "positive_pct": 44.4, "negative_pct": 33.3 },
+      { "month": "2024-02", "avg_sentiment": 0.09, "post_count": 16, "positive_pct": 43.8, "negative_pct": 37.5 },
+      { "month": "2024-03", "avg_sentiment": 0.07, "post_count": 20, "positive_pct": 40.0, "negative_pct": 40.0 },
+      { "month": "2024-04", "avg_sentiment": 0.05, "post_count": 19, "positive_pct": 36.8, "negative_pct": 42.1 },
+      { "month": "2024-05", "avg_sentiment": 0.03, "post_count": 22, "positive_pct": 36.4, "negative_pct": 45.5 },
+      { "month": "2024-06", "avg_sentiment": -0.04, "post_count": 21, "positive_pct": 33.3, "negative_pct": 52.4 },
+      { "month": "2024-07", "avg_sentiment": -0.08, "post_count": 25, "positive_pct": 28.0, "negative_pct": 56.0 },
+      { "month": "2024-08", "avg_sentiment": -0.11, "post_count": 24, "positive_pct": 25.0, "negative_pct": 58.3 },
+      { "month": "2024-09", "avg_sentiment": -0.15, "post_count": 28, "positive_pct": 21.4, "negative_pct": 60.7 },
+      { "month": "2024-10", "avg_sentiment": -0.22, "post_count": 30, "positive_pct": 20.0, "negative_pct": 63.3 },
+      { "month": "2024-11", "avg_sentiment": -0.28, "post_count": 27, "positive_pct": 22.2, "negative_pct": 62.9 },
+      { "month": "2024-12", "avg_sentiment": -0.25, "post_count": 26, "positive_pct": 23.1, "negative_pct": 61.5 },
+      { "month": "2025-01", "avg_sentiment": -0.27, "post_count": 22, "positive_pct": 22.7, "negative_pct": 63.6 },
+      { "month": "2025-02", "avg_sentiment": -0.30, "post_count": 20, "positive_pct": 20.0, "negative_pct": 65.0 },
+      { "month": "2025-03", "avg_sentiment": -0.31, "post_count": 19, "positive_pct": 21.1, "negative_pct": 63.2 },
+      { "month": "2025-04", "avg_sentiment": -0.33, "post_count": 18, "positive_pct": 22.2, "negative_pct": 66.7 },
+      { "month": "2025-05", "avg_sentiment": -0.312, "post_count": 16, "positive_pct": 21.4, "negative_pct": 64.3 }
+    ],
+    "irgc_iran": [
+      { "month": "2024-01", "avg_sentiment": -0.04, "post_count": 20, "positive_pct": 35.0, "negative_pct": 45.0 },
+      { "month": "2024-02", "avg_sentiment": -0.06, "post_count": 18, "positive_pct": 33.3, "negative_pct": 50.0 },
+      { "month": "2024-03", "avg_sentiment": -0.09, "post_count": 22, "positive_pct": 31.8, "negative_pct": 54.5 },
+      { "month": "2024-04", "avg_sentiment": -0.07, "post_count": 24, "positive_pct": 33.3, "negative_pct": 50.0 },
+      { "month": "2024-05", "avg_sentiment": -0.12, "post_count": 21, "positive_pct": 28.6, "negative_pct": 57.1 },
+      { "month": "2024-06", "avg_sentiment": -0.15, "post_count": 23, "positive_pct": 26.1, "negative_pct": 60.9 },
+      { "month": "2024-07", "avg_sentiment": -0.18, "post_count": 25, "positive_pct": 24.0, "negative_pct": 60.0 },
+      { "month": "2024-08", "avg_sentiment": -0.22, "post_count": 26, "positive_pct": 23.1, "negative_pct": 65.4 },
+      { "month": "2024-09", "avg_sentiment": -0.28, "post_count": 28, "positive_pct": 21.4, "negative_pct": 67.9 },
+      { "month": "2024-10", "avg_sentiment": -0.32, "post_count": 30, "positive_pct": 20.0, "negative_pct": 70.0 },
+      { "month": "2024-11", "avg_sentiment": -0.35, "post_count": 27, "positive_pct": 18.5, "negative_pct": 70.4 },
+      { "month": "2024-12", "avg_sentiment": -0.38, "post_count": 25, "positive_pct": 20.0, "negative_pct": 72.0 },
+      { "month": "2025-01", "avg_sentiment": -0.39, "post_count": 22, "positive_pct": 18.2, "negative_pct": 72.7 },
+      { "month": "2025-02", "avg_sentiment": -0.40, "post_count": 20, "positive_pct": 20.0, "negative_pct": 70.0 },
+      { "month": "2025-03", "avg_sentiment": -0.42, "post_count": 19, "positive_pct": 15.8, "negative_pct": 73.7 },
+      { "month": "2025-04", "avg_sentiment": -0.41, "post_count": 18, "positive_pct": 22.2, "negative_pct": 66.7 },
+      { "month": "2025-05", "avg_sentiment": -0.418, "post_count": 15, "positive_pct": 18.6, "negative_pct": 70.0 }
+    ],
+    "houthis": [
+      { "month": "2024-01", "avg_sentiment": 0.02, "post_count": 17, "positive_pct": 41.2, "negative_pct": 35.3 },
+      { "month": "2024-02", "avg_sentiment": -0.01, "post_count": 16, "positive_pct": 37.5, "negative_pct": 43.8 },
+      { "month": "2024-03", "avg_sentiment": -0.05, "post_count": 19, "positive_pct": 36.8, "negative_pct": 47.4 },
+      { "month": "2024-04", "avg_sentiment": -0.08, "post_count": 22, "positive_pct": 31.8, "negative_pct": 50.0 },
+      { "month": "2024-05", "avg_sentiment": -0.10, "post_count": 20, "positive_pct": 30.0, "negative_pct": 55.0 },
+      { "month": "2024-06", "avg_sentiment": -0.14, "post_count": 23, "positive_pct": 26.1, "negative_pct": 56.5 },
+      { "month": "2024-07", "avg_sentiment": -0.18, "post_count": 24, "positive_pct": 25.0, "negative_pct": 58.3 },
+      { "month": "2024-08", "avg_sentiment": -0.20, "post_count": 25, "positive_pct": 24.0, "negative_pct": 60.0 },
+      { "month": "2024-09", "avg_sentiment": -0.22, "post_count": 26, "positive_pct": 23.1, "negative_pct": 61.5 },
+      { "month": "2024-10", "avg_sentiment": -0.24, "post_count": 28, "positive_pct": 25.0, "negative_pct": 60.7 },
+      { "month": "2024-11", "avg_sentiment": -0.26, "post_count": 25, "positive_pct": 24.0, "negative_pct": 64.0 },
+      { "month": "2024-12", "avg_sentiment": -0.25, "post_count": 23, "positive_pct": 26.1, "negative_pct": 60.9 },
+      { "month": "2025-01", "avg_sentiment": -0.27, "post_count": 20, "positive_pct": 25.0, "negative_pct": 60.0 },
+      { "month": "2025-02", "avg_sentiment": -0.28, "post_count": 19, "positive_pct": 26.3, "negative_pct": 57.9 },
+      { "month": "2025-03", "avg_sentiment": -0.29, "post_count": 18, "positive_pct": 22.2, "negative_pct": 61.1 },
+      { "month": "2025-04", "avg_sentiment": -0.287, "post_count": 17, "positive_pct": 23.5, "negative_pct": 64.7 },
+      { "month": "2025-05", "avg_sentiment": -0.287, "post_count": 14, "positive_pct": 24.3, "negative_pct": 61.4 }
+    ],
+    "hamas_pij": [
+      { "month": "2024-01", "avg_sentiment": 0.18, "post_count": 20, "positive_pct": 50.0, "negative_pct": 35.0 },
+      { "month": "2024-02", "avg_sentiment": 0.14, "post_count": 19, "positive_pct": 47.4, "negative_pct": 36.8 },
+      { "month": "2024-03", "avg_sentiment": 0.10, "post_count": 22, "positive_pct": 45.5, "negative_pct": 40.9 },
+      { "month": "2024-04", "avg_sentiment": 0.06, "post_count": 24, "positive_pct": 41.7, "negative_pct": 45.8 },
+      { "month": "2024-05", "avg_sentiment": 0.02, "post_count": 25, "positive_pct": 40.0, "negative_pct": 52.0 },
+      { "month": "2024-06", "avg_sentiment": -0.05, "post_count": 26, "positive_pct": 34.6, "negative_pct": 57.7 },
+      { "month": "2024-07", "avg_sentiment": -0.10, "post_count": 28, "positive_pct": 28.6, "negative_pct": 60.7 },
+      { "month": "2024-08", "avg_sentiment": -0.16, "post_count": 27, "positive_pct": 22.2, "negative_pct": 66.7 },
+      { "month": "2024-09", "avg_sentiment": -0.22, "post_count": 30, "positive_pct": 20.0, "negative_pct": 70.0 },
+      { "month": "2024-10", "avg_sentiment": -0.32, "post_count": 32, "positive_pct": 15.6, "negative_pct": 75.0 },
+      { "month": "2024-11", "avg_sentiment": -0.40, "post_count": 30, "positive_pct": 16.7, "negative_pct": 76.7 },
+      { "month": "2024-12", "avg_sentiment": -0.42, "post_count": 28, "positive_pct": 17.9, "negative_pct": 75.0 },
+      { "month": "2025-01", "avg_sentiment": -0.46, "post_count": 25, "positive_pct": 16.0, "negative_pct": 76.0 },
+      { "month": "2025-02", "avg_sentiment": -0.48, "post_count": 23, "positive_pct": 17.4, "negative_pct": 78.3 },
+      { "month": "2025-03", "avg_sentiment": -0.50, "post_count": 22, "positive_pct": 13.6, "negative_pct": 81.8 },
+      { "month": "2025-04", "avg_sentiment": -0.503, "post_count": 20, "positive_pct": 15.0, "negative_pct": 80.0 },
+      { "month": "2025-05", "avg_sentiment": -0.503, "post_count": 16, "positive_pct": 15.7, "negative_pct": 77.1 }
+    ]
+  },
+  "theme_matrix": {
+    "hezbollah": {
+      "military_morale": { "count": 95, "avg_sentiment": -0.31, "positive_pct": 21.1, "negative_pct": 64.2 },
+      "civilian_support": { "count": 60, "avg_sentiment": -0.18, "positive_pct": 30.0, "negative_pct": 55.0 },
+      "economic_hardship": { "count": 45, "avg_sentiment": -0.42, "positive_pct": 11.1, "negative_pct": 75.6 },
+      "military_operations": { "count": 110, "avg_sentiment": -0.25, "positive_pct": 27.3, "negative_pct": 61.8 },
+      "leadership_trust": { "count": 40, "avg_sentiment": -0.02, "positive_pct": 40.0, "negative_pct": 47.5 },
+      "international_relations": { "count": 70, "avg_sentiment": -0.15, "positive_pct": 32.9, "negative_pct": 55.7 }
+    },
+    "irgc_iran": {
+      "military_morale": { "count": 70, "avg_sentiment": -0.28, "positive_pct": 22.9, "negative_pct": 64.3 },
+      "civilian_support": { "count": 90, "avg_sentiment": -0.42, "positive_pct": 17.8, "negative_pct": 71.1 },
+      "economic_hardship": { "count": 105, "avg_sentiment": -0.55, "positive_pct": 9.5, "negative_pct": 81.0 },
+      "military_operations": { "count": 65, "avg_sentiment": -0.22, "positive_pct": 30.8, "negative_pct": 58.5 },
+      "leadership_trust": { "count": 55, "avg_sentiment": -0.35, "positive_pct": 18.2, "negative_pct": 67.3 },
+      "international_relations": { "count": 80, "avg_sentiment": -0.12, "positive_pct": 35.0, "negative_pct": 52.5 }
+    },
+    "houthis": {
+      "military_morale": { "count": 80, "avg_sentiment": -0.18, "positive_pct": 35.0, "negative_pct": 53.8 },
+      "civilian_support": { "count": 75, "avg_sentiment": -0.38, "positive_pct": 16.0, "negative_pct": 69.3 },
+      "economic_hardship": { "count": 88, "avg_sentiment": -0.48, "positive_pct": 9.1, "negative_pct": 79.5 },
+      "military_operations": { "count": 95, "avg_sentiment": -0.10, "positive_pct": 40.0, "negative_pct": 48.4 },
+      "leadership_trust": { "count": 42, "avg_sentiment": -0.08, "positive_pct": 38.1, "negative_pct": 47.6 },
+      "international_relations": { "count": 60, "avg_sentiment": -0.20, "positive_pct": 28.3, "negative_pct": 58.3 }
+    },
+    "hamas_pij": {
+      "military_morale": { "count": 88, "avg_sentiment": -0.35, "positive_pct": 19.3, "negative_pct": 70.5 },
+      "civilian_support": { "count": 100, "avg_sentiment": -0.58, "positive_pct": 10.0, "negative_pct": 83.0 },
+      "economic_hardship": { "count": 95, "avg_sentiment": -0.62, "positive_pct": 6.3, "negative_pct": 87.4 },
+      "military_operations": { "count": 105, "avg_sentiment": -0.42, "positive_pct": 15.2, "negative_pct": 75.2 },
+      "leadership_trust": { "count": 48, "avg_sentiment": -0.22, "positive_pct": 29.2, "negative_pct": 60.4 },
+      "international_relations": { "count": 70, "avg_sentiment": -0.45, "positive_pct": 14.3, "negative_pct": 74.3 }
+    }
+  }
+}

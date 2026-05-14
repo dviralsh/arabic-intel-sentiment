@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arabic OSINT Intelligence Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ── TOP NAV ─────────────────────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="nav-icon">◈</span>
+    <span class="nav-title">ARABIC INTEL<span class="nav-subtitle"> // SENTIMENT ANALYSIS PLATFORM</span></span>
+  </div>
+  <div class="nav-meta">
+    <span class="nav-badge live">● OSINT</span>
+    <span class="nav-badge">UNCLASSIFIED</span>
+    <span id="report-ts" class="nav-ts">—</span>
+  </div>
+</nav>
+
+<!-- ── MAIN LAYOUT ────────────────────────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">FILTER GROUP</div>
+      <button class="group-btn active" data-group="all">All Groups</button>
+      <button class="group-btn" data-group="hezbollah" style="--g-color:#FFD700">Hezbollah</button>
+      <button class="group-btn" data-group="irgc_iran" style="--g-color:#CC0000">Iran / IRGC</button>
+      <button class="group-btn" data-group="houthis" style="--g-color:#4CAF50">Houthis</button>
+      <button class="group-btn" data-group="hamas_pij" style="--g-color:#607D8B">Hamas / PIJ</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">FILTER THEME</div>
+      <button class="theme-btn active" data-theme="all">All Themes</button>
+      <button class="theme-btn" data-theme="military_morale">Military Morale</button>
+      <button class="theme-btn" data-theme="civilian_support">Civilian Support</button>
+      <button class="theme-btn" data-theme="economic_hardship">Economic Pressure</button>
+      <button class="theme-btn" data-theme="military_operations">Operations</button>
+      <button class="theme-btn" data-theme="leadership_trust">Leadership Trust</button>
+      <button class="theme-btn" data-theme="international_relations">Int'l Relations</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">CONFIDENCE</div>
+      <label class="checkbox-label"><input type="checkbox" class="conf-filter" value="high" checked /> High</label>
+      <label class="checkbox-label"><input type="checkbox" class="conf-filter" value="medium" checked /> Medium</label>
+      <label class="checkbox-label"><input type="checkbox" class="conf-filter" value="low" /> Low</label>
+    </div>
+    <div class="sidebar-section stats-mini">
+      <div class="sidebar-label">DATA COVERAGE</div>
+      <div class="stat-row"><span>Total Posts</span><span id="stat-total" class="stat-val">—</span></div>
+      <div class="stat-row"><span>Telegram</span><span id="stat-telegram" class="stat-val">—</span></div>
+      <div class="stat-row"><span>Twitter/X</span><span id="stat-twitter" class="stat-val">—</span></div>
+      <div class="stat-row"><span>Assessments</span><span id="stat-assessments" class="stat-val">—</span></div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- KPI CARDS -->
+    <section class="kpi-grid" id="kpi-grid">
+      <!-- injected by JS -->
+    </section>
+
+    <!-- ALERT BANNER for top finding -->
+    <div class="alert-banner" id="alert-banner">
+      <span class="alert-icon">⚠</span>
+      <span id="alert-text">Loading intelligence findings…</span>
+    </div>
+
+    <!-- ROW 1: Timeline + Radar -->
+    <div class="charts-row">
+      <div class="chart-card wide">
+        <div class="chart-header">
+          <span class="chart-title">SENTIMENT TIMELINE</span>
+          <span class="chart-sub">Monthly weighted sentiment score — 2024 Baseline → Current</span>
+          <div class="chart-controls">
+            <button class="ctrl-btn active" data-chart-view="score">Score</button>
+            <button class="ctrl-btn" data-chart-view="negative">Negative %</button>
+            <button class="ctrl-btn" data-chart-view="positive">Positive %</button>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="timelineChart"></canvas></div>
+      </div>
+      <div class="chart-card narrow">
+        <div class="chart-header">
+          <span class="chart-title">THEME HEAT</span>
+          <span class="chart-sub">Avg sentiment by group × theme</span>
+        </div>
+        <div class="chart-wrap"><canvas id="radarChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Bar comparison + Doughnut -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-header">
+          <span class="chart-title">BASELINE vs CURRENT</span>
+          <span class="chart-sub">Sentiment score comparison — 2024 vs 2025–2026</span>
+        </div>
+        <div class="chart-wrap"><canvas id="compareChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header">
+          <span class="chart-title">SENTIMENT MIX</span>
+          <span class="chart-sub">Distribution of positive / negative / neutral</span>
+        </div>
+        <div class="chart-wrap"><canvas id="doughnutChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header">
+          <span class="chart-title">DELTA RANKING</span>
+          <span class="chart-sub">Sentiment change vs 2024 (pp)</span>
+        </div>
+        <div class="chart-wrap"><canvas id="deltaChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- THEME MATRIX HEATMAP -->
+    <div class="chart-card full-width">
+      <div class="chart-header">
+        <span class="chart-title">THEME × GROUP SENTIMENT MATRIX</span>
+        <span class="chart-sub">Average sentiment score per theme per group (–1 very negative → +1 very positive)</span>
+      </div>
+      <div id="heatmap-container" class="heatmap-container"></div>
+    </div>
+
+    <!-- INTELLIGENCE ASSESSMENTS -->
+    <section class="assessments-section">
+      <div class="section-header">
+        <span class="section-title">INTELLIGENCE ASSESSMENTS</span>
+        <span class="section-sub">Comparative findings with supporting evidence</span>
+      </div>
+      <div id="assessments-list" class="assessments-list">
+        <!-- injected by JS -->
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="dash-footer">
+      <span>Arabic OSINT Intelligence Sentiment Analysis Platform</span>
+      <span>Data: Public Telegram &amp; Twitter/X channels | NLP: MARBERTv2 / AraBERT</span>
+      <span>UNCLASSIFIED // FOR RESEARCH USE</span>
+    </footer>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

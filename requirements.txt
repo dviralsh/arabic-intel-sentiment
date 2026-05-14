@@ -1,0 +1,47 @@
+# ── Core ─────────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+requests>=2.31.0
+tqdm>=4.66.1
+loguru>=0.7.2
+schedule>=1.2.1
+
+# ── Data storage ─────────────────────────────────────────────────────────────
+pandas>=2.1.0
+numpy>=1.24.0
+sqlalchemy>=2.0.0
+
+# ── Data collection ───────────────────────────────────────────────────────────
+tweepy>=4.14.0
+telethon>=1.34.0
+
+# ── Arabic NLP ────────────────────────────────────────────────────────────────
+camel-tools>=1.5.2
+pyarabic>=0.6.15
+langdetect>=1.0.9
+emoji>=2.10.1
+
+# ── Deep learning / transformers ──────────────────────────────────────────────
+torch>=2.1.0
+transformers>=4.38.0
+sentencepiece>=0.1.99
+accelerate>=0.26.0
+
+# ── Topic modeling ────────────────────────────────────────────────────────────
+bertopic>=0.16.0
+scikit-learn>=1.4.0
+umap-learn>=0.5.6
+hdbscan>=0.8.33
+
+# ── Visualization (report export) ─────────────────────────────────────────────
+matplotlib>=3.8.0
+seaborn>=0.13.0
+plotly>=5.19.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dateutil>=2.8.2
+pytz>=2024.1
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.2
+tenacity>=8.2.3
+rich>=13.7.0

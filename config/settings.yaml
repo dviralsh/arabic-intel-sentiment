@@ -1,0 +1,56 @@
+################################################################################
+# APPLICATION SETTINGS
+################################################################################
+
+api:
+  twitter:
+    bearer_token: "${TWITTER_BEARER_TOKEN}"
+    api_key: "${TWITTER_API_KEY}"
+    api_secret: "${TWITTER_API_SECRET}"
+    access_token: "${TWITTER_ACCESS_TOKEN}"
+    access_token_secret: "${TWITTER_ACCESS_TOKEN_SECRET}"
+    rate_limit_window: 900   # seconds
+    max_results_per_request: 100
+    max_retries: 3
+    retry_delay: 60
+
+  telegram:
+    api_id: "${TELEGRAM_API_ID}"
+    api_hash: "${TELEGRAM_API_HASH}"
+    phone: "${TELEGRAM_PHONE}"
+    session_name: "intel_collector"
+    request_delay: 2  # seconds between requests
+    max_messages_per_channel: 5000
+
+storage:
+  database_path: "data/intel.db"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  results_dir: "data/results"
+  dashboard_data_dir: "dashboard/data"
+
+logging:
+  level: "INFO"
+  file: "logs/intel.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+nlp:
+  translation_api: "${GOOGLE_TRANSLATE_API_KEY}"  # optional, for auto-translation
+  transliteration: true
+  remove_diacritics: true
+  normalize_alef: true
+  normalize_hamza: true
+  remove_elongation: true
+
+output:
+  generate_html_dashboard: true
+  generate_json_report: true
+  generate_pdf_report: false
+  dashboard_output_dir: "dashboard"
+  report_filename: "intelligence_report.json"
+
+scheduler:
+  collection_interval_hours: 6
+  analysis_interval_hours: 12
+  report_generation_interval_hours: 24

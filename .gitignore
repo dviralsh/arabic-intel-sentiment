@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+
+# Secrets
+.env
+*.session
+*.session-journal
+
+# Data (raw collected data stays local)
+data/raw/
+data/processed/
+logs/
+
+# Models cache (large)
+.cache/
+models/
+
+# OS
+.DS_Store
+Thumbs.db

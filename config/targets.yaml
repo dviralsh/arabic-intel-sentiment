@@ -1,0 +1,193 @@
+################################################################################
+# TARGET ACCOUNTS CONFIGURATION
+# Arabic-language accounts associated with designated terror/hostile organizations
+# Sources: public social media only (OSINT)
+################################################################################
+
+groups:
+  hezbollah:
+    display_name: "Hezbollah"
+    color: "#FFD700"
+    twitter_accounts:
+      - handle: "almanarnews"
+        description: "Al-Manar TV (Hezbollah media)"
+      - handle: "alahednews"
+        description: "Al-Ahed News (Hezbollah)"
+      - handle: "moqawama"
+        description: "Islamic Resistance - general"
+    telegram_channels:
+      - username: "almanar_news"
+        description: "Al-Manar official Telegram"
+      - username: "hezbollah_media"
+        description: "Hezbollah Media Relations"
+      - username: "alahednews"
+        description: "Al-Ahed News Telegram"
+      - username: "nasrallah_speeches"
+        description: "Nasrallah speeches archive"
+    keywords_ar:
+      - "المقاومة الإسلامية"
+      - "حزب الله"
+      - "الضاحية الجنوبية"
+      - "بيروت"
+      - "جنوب لبنان"
+      - "السيد حسن"
+      - "الوحدات"
+      - "المجاهدين"
+    keywords_en:
+      - "hezbollah"
+      - "islamic resistance lebanon"
+      - "nasrallah"
+      - "southern lebanon"
+    baseline_year: 2024
+
+  irgc_iran:
+    display_name: "Iran / IRGC"
+    color: "#CC0000"
+    twitter_accounts:
+      - handle: "PressTV"
+        description: "PressTV (Iranian state media)"
+      - handle: "khamenei_ir"
+        description: "Khamenei official"
+      - handle: "iraniandiplomat"
+        description: "Iran MFA"
+      - handle: "tasnimnews_ar"
+        description: "Tasnim News Arabic"
+    telegram_channels:
+      - username: "tasnim_ar"
+        description: "Tasnim Arabic"
+      - username: "irna_farsi"
+        description: "IRNA Persian"
+      - username: "iran_arabic_news"
+        description: "Iran Arabic news"
+      - username: "presstv_ar"
+        description: "PressTV Arabic"
+    keywords_ar:
+      - "الحرس الثوري"
+      - "الجمهورية الإسلامية"
+      - "ولي الفقيه"
+      - "الثورة الإسلامية"
+      - "خامنئي"
+      - "إيران"
+      - "باسدار"
+      - "الوحدة ضد الاستكبار"
+    keywords_en:
+      - "irgc"
+      - "iran revolutionary guard"
+      - "khamenei"
+      - "islamic republic iran"
+    baseline_year: 2024
+
+  houthis:
+    display_name: "Houthis / Ansar Allah"
+    color: "#006400"
+    twitter_accounts:
+      - handle: "ansarallah_media"
+        description: "Ansar Allah Media"
+      - handle: "al_masirah"
+        description: "Al-Masirah TV"
+      - handle: "saba_yemen"
+        description: "Saba News Agency (Houthi)"
+    telegram_channels:
+      - username: "ansarallah_media"
+        description: "Ansar Allah official"
+      - username: "almasirah_net"
+        description: "Al-Masirah TV"
+      - username: "houthi_military"
+        description: "Houthi military media"
+      - username: "yemen_resistance"
+        description: "Yemen resistance news"
+    keywords_ar:
+      - "أنصار الله"
+      - "الحوثيون"
+      - "صنعاء"
+      - "اليمن"
+      - "الله أكبر الموت لأمريكا"
+      - "عمليات القوات المسلحة"
+      - "البحر الأحمر"
+      - "عبد الملك الحوثي"
+    keywords_en:
+      - "houthi"
+      - "ansar allah"
+      - "yemen resistance"
+      - "red sea attacks"
+    baseline_year: 2024
+
+  hamas_pij:
+    display_name: "Hamas / PIJ"
+    color: "#2F4F4F"
+    twitter_accounts:
+      - handle: "hamasinfo"
+        description: "Hamas info (archived)"
+      - handle: "qassam_arabic"
+        description: "Al-Qassam Brigades"
+      - handle: "pij_media"
+        description: "Islamic Jihad media"
+    telegram_channels:
+      - username: "qassam_arabic"
+        description: "Al-Qassam Arabic"
+      - username: "hamas_info"
+        description: "Hamas official info"
+      - username: "saraya_alquds"
+        description: "Saraya Al-Quds (PIJ)"
+      - username: "gaza_resistance"
+        description: "Gaza resistance news"
+    keywords_ar:
+      - "حماس"
+      - "الجهاد الإسلامي"
+      - "كتائب عز الدين القسام"
+      - "سرايا القدس"
+      - "غزة"
+      - "المقاومة الفلسطينية"
+      - "يحيى السنوار"
+      - "محمد الضيف"
+    keywords_en:
+      - "hamas"
+      - "al-qassam"
+      - "islamic jihad palestine"
+      - "gaza resistance"
+    baseline_year: 2024
+
+################################################################################
+# ANALYSIS PARAMETERS
+################################################################################
+analysis:
+  sentiment_model: "UBC-NLP/MARBERTv2"
+  fallback_model: "aubmindlab/bert-base-arabertv02"
+  batch_size: 32
+  max_sequence_length: 512
+  languages: ["ar", "fa"]  # Arabic, Farsi
+  min_text_length: 10
+  collection_window_days: 90  # rolling 90-day window
+  baseline_period:
+    start: "2024-01-01"
+    end: "2024-12-31"
+  comparison_period:
+    start: "2025-01-01"
+    end: "2026-05-14"  # today
+
+  # Intelligence themes to track
+  themes:
+    - id: "military_morale"
+      label: "Military Morale"
+      keywords_ar: ["شهيد", "استشهد", "نصر", "هزيمة", "انتصار", "معنويات", "صمود", "مقاومة"]
+      keywords_en: ["martyr", "victory", "defeat", "resistance", "steadfast"]
+    - id: "civilian_support"
+      label: "Civilian Support"
+      keywords_ar: ["الشعب", "مواطنون", "جماهير", "دعم", "تضامن", "احتجاج", "معارضة"]
+      keywords_en: ["people", "civilian", "support", "protest", "opposition"]
+    - id: "economic_hardship"
+      label: "Economic Pressure"
+      keywords_ar: ["اقتصاد", "فقر", "غلاء", "عقوبات", "حصار", "تضخم", "بطالة"]
+      keywords_en: ["economy", "sanctions", "inflation", "poverty", "blockade"]
+    - id: "military_operations"
+      label: "Military Operations"
+      keywords_ar: ["عملية", "هجوم", "قصف", "صاروخ", "طائرة مسيّرة", "دفاع", "ميليشيا"]
+      keywords_en: ["operation", "attack", "missile", "drone", "airstrike", "defense"]
+    - id: "leadership_trust"
+      label: "Leadership Trust"
+      keywords_ar: ["قيادة", "ثقة", "قرار", "فساد", "خيانة", "إخلاص", "بيعة"]
+      keywords_en: ["leadership", "trust", "decision", "corruption", "loyalty"]
+    - id: "international_relations"
+      label: "International Relations"
+      keywords_ar: ["إيران", "روسيا", "الصين", "أمريكا", "إسرائيل", "تحالف", "دبلوماسية"]
+      keywords_en: ["iran", "russia", "china", "america", "israel", "alliance"]

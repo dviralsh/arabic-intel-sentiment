@@ -1,0 +1,61 @@
+name: Run Analysis Pipeline
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Pipeline mode"
+        required: true
+        default: "demo"
+        type: choice
+        options: [demo, full, analyze, report]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        env:
+          TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_PHONE: ${{ secrets.TELEGRAM_PHONE }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'demo' }}"
+          python main.py --mode $MODE $( [ "$MODE" = "demo" ] && echo "--demo" || echo "" )
+
+      - name: Commit updated report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard/data/intelligence_report.json dashboard/data/summary.json || true
+          git diff --cached --quiet || git commit -m "chore: update intelligence report [skip ci]"
+          git push
+
+      - name: Trigger Pages deploy
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'pages.yml',
+              ref: 'main',
+            });
