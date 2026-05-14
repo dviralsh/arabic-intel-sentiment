@@ -3,11 +3,10 @@ Arabic Intelligence Sentiment Analysis — Main Orchestrator
 Big-data pipeline with incremental state management.
 
 Modes:
-  demo     — generate 10k+ synthetic posts per group, run full analysis
-  collect  — collect from live APIs (Twitter + Telegram + RSS + Web)
-  analyze  — run NLP on cached/collected posts
-  report   — generate dashboard JSON from analyzed results
-  full     — collect + analyze + report
+  collect     — collect from live sources (RSS + Web free; Twitter/Telegram need API keys)
+  analyze     — run NLP on cached/collected posts
+  report      — generate dashboard JSON from analyzed results
+  full        — collect + analyze + report
   incremental — collect only new posts since last watermark, then report
 """
 
@@ -408,19 +407,24 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
 
     # ── COLLECT ───────────────────────────────────────────────────────────────
     if mode in ("collect", "full", "incremental"):
-        if use_demo:
-            raw_posts = generate_demo_data(
-                target_per_group=analysis_cfg.get("target_samples_per_group", 10000)
-            )
-        else:
-            from collectors import TwitterCollector, TelegramCollector, RSSCollector, WebScraper
+        from collectors import TwitterCollector, TelegramCollector, RSSCollector, WebScraper
+        if True:  # always real data
 
-            collectors_map = {
-                "Twitter":  TwitterCollector(config, targets),
-                "Telegram": TelegramCollector(config, targets),
-                "RSS":      RSSCollector(config, targets),
-                "Web":      WebScraper(config, targets),
-            }
+            # RSS and Web are always active (no API keys needed).
+        # Twitter and Telegram activate only when API credentials are present in env.
+        collectors_map = {}
+        collectors_map["RSS"] = RSSCollector(config, targets)
+        collectors_map["Web"] = WebScraper(config, targets)
+        if os.getenv("TWITTER_BEARER_TOKEN"):
+            collectors_map["Twitter"] = TwitterCollector(config, targets)
+            console.print("[dim]Twitter collector: active[/]")
+        else:
+            console.print("[yellow]Twitter collector: skipped (no TWITTER_BEARER_TOKEN)[/]")
+        if os.getenv("TELEGRAM_API_ID"):
+            collectors_map["Telegram"] = TelegramCollector(config, targets)
+            console.print("[dim]Telegram collector: active[/]")
+        else:
+            console.print("[yellow]Telegram collector: skipped (no TELEGRAM_API_ID)[/]")
 
             for name, collector in collectors_map.items():
                 console.print(f"[cyan]Collecting via {name}...[/]")
@@ -451,21 +455,20 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
                 raw_posts.extend(p for p in cached_raw if p.post_id not in existing_ids)
 
         # Save to state cache
-        if not use_demo:
-            state_mgr.save_posts(raw_posts)
-            state_mgr.save_state()
+        state_mgr.save_posts(raw_posts)
+        state_mgr.save_state()
 
         _persist_raw(raw_posts)
         console.print(f"[green]✓[/] Collected [bold]{len(raw_posts):,}[/] raw posts")
 
     elif mode in ("analyze", "report"):
-        raw_posts = _load_raw_or_demo(use_demo, state_mgr, baseline_start, current_end, analysis_cfg)
+        raw_posts = _load_raw(state_mgr, baseline_start, current_end)
 
     # ── ANALYZE ───────────────────────────────────────────────────────────────
     sentiment_results = []
-    if mode in ("analyze", "full", "demo", "incremental"):
+    if mode in ("analyze", "full", "incremental"):
         if not raw_posts:
-            raw_posts = _load_raw_or_demo(use_demo, state_mgr, baseline_start, current_end, analysis_cfg)
+            raw_posts = _load_raw(state_mgr, baseline_start, current_end)
 
         console.print(f"\n[cyan]Preprocessing {len(raw_posts):,} posts...[/]")
         processed = preprocessor.process_batch(raw_posts)
@@ -488,7 +491,7 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
         _persist_sentiment(sentiment_results)
 
     # ── REPORT ────────────────────────────────────────────────────────────────
-    if mode in ("report", "full", "demo", "incremental"):
+    if mode in ("report", "full", "incremental"):
         if not sentiment_results:
             sentiment_results = _load_sentiment(targets)
 
@@ -534,7 +537,7 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
         )
         console.print(f"[green]✓[/] Report → dashboard/data/intelligence_report.json")
 
-        if not use_demo and mode == "incremental":
+        if mode == "incremental":
             state_mgr.commit_to_github()
 
         _print_summary(console, report)
@@ -583,10 +586,10 @@ def _persist_sentiment(results: list):
         )
 
 
-def _load_raw_or_demo(use_demo, state_mgr, baseline_start, current_end, analysis_cfg):
+def _load_raw(state_mgr, baseline_start, current_end) -> list:
+    from collectors.base_collector import RawPost
     raw_path = Path("data/raw/raw_posts.json")
     if raw_path.exists():
-        from collectors.base_collector import RawPost
         with open(raw_path, encoding="utf-8") as f:
             data = json.load(f)
         posts = []
@@ -608,13 +611,11 @@ def _load_raw_or_demo(use_demo, state_mgr, baseline_start, current_end, analysis
             ))
         return posts
 
-    # Fall back to cache or demo
     cached = state_mgr.load_cached_posts(start_time=baseline_start, end_time=current_end)
     if cached:
         return [state_mgr.dict_to_raw_post(d) for d in cached]
 
-    if use_demo:
-        return generate_demo_data(analysis_cfg.get("target_samples_per_group", 10000))
+    logger.warning("No collected data found. Run: python main.py --mode collect")
     return []
 
 
@@ -681,12 +682,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Arabic Intel Sentiment Analysis")
     parser.add_argument(
         "--mode",
-        choices=["collect", "analyze", "report", "full", "demo", "incremental"],
-        default="demo",
+        choices=["collect", "analyze", "report", "full", "incremental"],
+        default="incremental",
+        help=(
+            "collect: RSS+Web free, Twitter/Telegram need API keys; "
+            "incremental: collect only new posts since last run (default); "
+            "full: collect + analyze + report from scratch; "
+            "analyze/report: reprocess existing cached data"
+        ),
     )
-    parser.add_argument("--demo", action="store_true")
     args = parser.parse_args()
-    use_demo = args.demo or args.mode == "demo"
     incremental = args.mode == "incremental"
-    effective_mode = "full" if args.mode in ("demo", "incremental") else args.mode
-    run_pipeline(effective_mode, use_demo=use_demo, incremental=incremental)
+    effective_mode = "full" if args.mode == "incremental" else args.mode
+    run_pipeline(effective_mode, use_demo=False, incremental=incremental)

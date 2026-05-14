@@ -11,7 +11,7 @@ on:
         required: true
         default: "incremental"
         type: choice
-        options: [demo, incremental, full, analyze, report, collect]
+        options: [incremental, full, collect, analyze, report]
 
 permissions:
   contents: write
@@ -95,12 +95,7 @@ jobs:
         env:
           MODE: ${{ github.event.inputs.mode || 'incremental' }}
           GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
-        run: |
-          if [ "$MODE" = "demo" ]; then
-            python main.py --mode demo --demo
-          else
-            python main.py --mode report
-          fi
+        run: python main.py --mode report
 
       - name: Commit updated dashboard report
         run: |
