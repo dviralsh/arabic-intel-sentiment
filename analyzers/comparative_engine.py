@@ -283,6 +283,6 @@ class ComparativeEngine:
                 "engagement_weight": r.engagement_weight,
                 "weighted_sentiment": r.weighted_sentiment,
                 "themes": r.themes,
-                "engagement": r.engagement,
+                "engagement": r.engagement_weight,
             })
         return pd.DataFrame(records)
