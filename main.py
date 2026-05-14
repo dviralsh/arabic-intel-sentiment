@@ -408,10 +408,9 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
     # ── COLLECT ───────────────────────────────────────────────────────────────
     if mode in ("collect", "full", "incremental"):
         from collectors import TwitterCollector, TelegramCollector, RSSCollector, WebScraper
-        if True:  # always real data
 
-            # RSS and Web are always active (no API keys needed).
-        # Twitter and Telegram activate only when API credentials are present in env.
+        # RSS and Web always run (no API keys needed).
+        # Twitter and Telegram activate only when credentials are present in env.
         collectors_map = {}
         collectors_map["RSS"] = RSSCollector(config, targets)
         collectors_map["Web"] = WebScraper(config, targets)
@@ -426,33 +425,30 @@ def run_pipeline(mode: str, use_demo: bool = False, incremental: bool = False):
         else:
             console.print("[yellow]Telegram collector: skipped (no TELEGRAM_API_ID)[/]")
 
-            for name, collector in collectors_map.items():
-                console.print(f"[cyan]Collecting via {name}...[/]")
-                for group_id in targets["groups"]:
-                    # Incremental: start from watermark
-                    watermark = None
-                    if incremental:
-                        watermark = state_mgr.get_watermark(f"{name.lower()}_{group_id}")
-                    try:
-                        new_posts = collector.collect_group(
-                            group_id,
-                            start_time=watermark or baseline_start,
-                            end_time=current_end,
-                        )
-                        state_mgr.update_watermark(f"{name.lower()}_{group_id}", new_posts)
-                        raw_posts.extend(new_posts)
-                    except Exception as exc:
-                        logger.error(f"{name}/{group_id}: {exc}")
+        for name, collector in collectors_map.items():
+            console.print(f"[cyan]Collecting via {name}...[/]")
+            for group_id in targets["groups"]:
+                watermark = None
+                if incremental:
+                    watermark = state_mgr.get_watermark(f"{name.lower()}_{group_id}")
+                try:
+                    new_posts = collector.collect_group(
+                        group_id,
+                        start_time=watermark or baseline_start,
+                        end_time=current_end,
+                    )
+                    state_mgr.update_watermark(f"{name.lower()}_{group_id}", new_posts)
+                    raw_posts.extend(new_posts)
+                except Exception as exc:
+                    logger.error(f"{name}/{group_id}: {exc}")
 
-            # Also load existing cached posts for full context
-            if incremental:
-                cached = state_mgr.load_cached_posts(
-                    start_time=baseline_start, end_time=current_end
-                )
-                cached_raw = [state_mgr.dict_to_raw_post(d) for d in cached]
-                # Deduplicate by post_id
-                existing_ids = {p.post_id for p in raw_posts}
-                raw_posts.extend(p for p in cached_raw if p.post_id not in existing_ids)
+        if incremental:
+            cached = state_mgr.load_cached_posts(
+                start_time=baseline_start, end_time=current_end
+            )
+            cached_raw = [state_mgr.dict_to_raw_post(d) for d in cached]
+            existing_ids = {p.post_id for p in raw_posts}
+            raw_posts.extend(p for p in cached_raw if p.post_id not in existing_ids)
 
         # Save to state cache
         state_mgr.save_posts(raw_posts)
