@@ -125,6 +125,24 @@
       </div>
     </div>
 
+    <!-- SOURCE TYPE ANALYSIS — key intelligence section -->
+    <div class="chart-card full-width source-section">
+      <div class="chart-header">
+        <span class="chart-title">SOURCE-TYPE SENTIMENT ANALYSIS</span>
+        <span class="chart-sub">Official propaganda vs civilian grassroots — divergence = suppressed crisis</span>
+        <div class="chart-controls">
+          <button class="ctrl-btn active" data-src-view="bar">Bar Chart</button>
+          <button class="ctrl-btn" data-src-view="divergence">Divergence</button>
+        </div>
+      </div>
+      <div id="divergence-alerts" class="divergence-alerts"></div>
+      <div class="charts-row" style="margin-top:12px">
+        <div style="flex:2"><canvas id="sourceTypeChart" style="max-height:280px"></canvas></div>
+        <div style="flex:1"><canvas id="sourcePieChart" style="max-height:280px"></canvas></div>
+      </div>
+      <div id="source-profiles-grid" class="source-profiles-grid"></div>
+    </div>
+
     <!-- THEME MATRIX HEATMAP -->
     <div class="chart-card full-width">
       <div class="chart-header">
@@ -132,6 +150,15 @@
         <span class="chart-sub">Average sentiment score per theme per group (–1 very negative → +1 very positive)</span>
       </div>
       <div id="heatmap-container" class="heatmap-container"></div>
+    </div>
+
+    <!-- PLATFORM BREAKDOWN -->
+    <div class="chart-card full-width">
+      <div class="chart-header">
+        <span class="chart-title">PLATFORM BREAKDOWN</span>
+        <span class="chart-sub">Sentiment split by collection platform — Telegram vs Twitter vs RSS vs Web</span>
+      </div>
+      <div class="chart-wrap" style="height:260px"><canvas id="platformChart"></canvas></div>
     </div>
 
     <!-- INTELLIGENCE ASSESSMENTS -->

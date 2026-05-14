@@ -1,193 +1,912 @@
 ################################################################################
-# TARGET ACCOUNTS CONFIGURATION
-# Arabic-language accounts associated with designated terror/hostile organizations
-# Sources: public social media only (OSINT)
+# TARGET SOURCES — ARABIC INTELLIGENCE COLLECTION
+# 100+ sources across 5 source types per group
+#
+# SOURCE TYPES (intel value explanation):
+#   official_media    — state/party-controlled broadcast outlets
+#                       → pure propaganda signal; watch for narrative shifts
+#   official_telegram — group's own Telegram channels
+#                       → fastest primary messaging; less filtered
+#   affiliated_telegram — sympathizer/amplifier channels
+#                       → organic spread, grassroots tone
+#   civilian_telegram — civilian commentary discussing these groups
+#                       → real public sentiment; highest intel value
+#   twitter_official  — verified/official Twitter accounts
+#   twitter_affiliated — supporter accounts and journalists
+#   rss_feed          — RSS/Atom from aligned news agencies
+#   web_official      — official websites (HTML scraping)
 ################################################################################
 
+source_types:
+  official_media:
+    label: "Official Media"
+    color: "#ef4444"
+    description: "State or party-controlled broadcast outlets — pure propaganda signal"
+  official_telegram:
+    label: "Official Telegram"
+    color: "#f97316"
+    description: "Group's own Telegram channels — primary messaging, less filtered"
+  affiliated_telegram:
+    label: "Affiliated Telegram"
+    color: "#eab308"
+    description: "Sympathizer/amplifier channels — organic spread and grassroots tone"
+  civilian_telegram:
+    label: "Civilian Telegram"
+    color: "#22c55e"
+    description: "Civilian commentary on these groups — highest raw intelligence value"
+  twitter_official:
+    label: "Official Twitter"
+    color: "#818cf8"
+    description: "Official verified accounts — curated public statements"
+  twitter_affiliated:
+    label: "Affiliated Twitter"
+    color: "#a78bfa"
+    description: "Supporter journalists and activists — amplification layer"
+  rss_feed:
+    label: "RSS / News"
+    color: "#06b6d4"
+    description: "Aligned news agencies via RSS — volume content"
+  web_official:
+    label: "Official Websites"
+    color: "#64748b"
+    description: "Official party/org websites — authoritative statements"
+
+################################################################################
 groups:
   hezbollah:
     display_name: "Hezbollah"
     color: "#FFD700"
-    twitter_accounts:
-      - handle: "almanarnews"
-        description: "Al-Manar TV (Hezbollah media)"
-      - handle: "alahednews"
-        description: "Al-Ahed News (Hezbollah)"
-      - handle: "moqawama"
-        description: "Islamic Resistance - general"
-    telegram_channels:
-      - username: "almanar_news"
-        description: "Al-Manar official Telegram"
-      - username: "hezbollah_media"
-        description: "Hezbollah Media Relations"
+    baseline_year: 2024
+    target_sample_size: 10000
+
+    official_media:
+      - id: "almanar_tv"
+        name: "Al-Manar TV"
+        url: "https://almanar.com.lb"
+        rss: "https://almanar.com.lb/rss.xml"
+        language: ar
+        notes: "Hezbollah's primary TV channel; also streams online"
+      - id: "alahad_news"
+        name: "Al-Ahad News"
+        url: "https://al-ahed.com"
+        rss: "https://al-ahed.com/feed"
+        language: ar
+        notes: "Hezbollah news portal — detailed communiqués"
+      - id: "moqawama_org"
+        name: "Al-Moqawama"
+        url: "https://moqawama.org"
+        rss: "https://moqawama.org/rss.xml"
+        language: ar
+        notes: "Islamic Resistance general website"
+      - id: "alintiqad_net"
+        name: "Al-Intiqad"
+        url: "https://al-intiqad.com"
+        rss: "https://al-intiqad.com/feed"
+        language: ar
+        notes: "Hezbollah-aligned political analysis"
+      - id: "nbnnews_lb"
+        name: "NBN Lebanon"
+        url: "https://www.nbn.com.lb"
+        rss: "https://www.nbn.com.lb/rss.xml"
+        language: ar
+        notes: "Amal/Hezbollah-affiliated TV channel"
+
+    official_telegram:
+      - username: "almanarnews"
+        name: "Al-Manar News"
+        estimated_subscribers: 350000
       - username: "alahednews"
-        description: "Al-Ahed News Telegram"
+        name: "Al-Ahed News"
+        estimated_subscribers: 280000
+      - username: "hezbollah_media_r"
+        name: "Hezbollah Media Relations"
+        estimated_subscribers: 420000
       - username: "nasrallah_speeches"
-        description: "Nasrallah speeches archive"
+        name: "Nasrallah Speeches Archive"
+        estimated_subscribers: 190000
+      - username: "islamic_resistance_lb"
+        name: "Islamic Resistance Lebanon"
+        estimated_subscribers: 510000
+      - username: "moqawama_lb"
+        name: "Al-Moqawama"
+        estimated_subscribers: 160000
+      - username: "hezbollah_military_wing"
+        name: "Military Wing Communiqués"
+        estimated_subscribers: 380000
+
+    affiliated_telegram:
+      - username: "southlb_news"
+        name: "South Lebanon News"
+        estimated_subscribers: 95000
+      - username: "dahiya_news"
+        name: "Dahiya (Beirut South)"
+        estimated_subscribers: 72000
+      - username: "lebanon_resistance_daily"
+        name: "Lebanon Resistance Daily"
+        estimated_subscribers: 88000
+      - username: "tyr_sidon_news"
+        name: "Tyre & Sidon Updates"
+        estimated_subscribers: 64000
+      - username: "nabatieh_channel"
+        name: "Nabatieh Channel"
+        estimated_subscribers: 51000
+      - username: "bint_jbeil_news"
+        name: "Bint Jbeil News"
+        estimated_subscribers: 43000
+      - username: "al_dahiya_community"
+        name: "Dahiya Community"
+        estimated_subscribers: 130000
+      - username: "hezbollah_supporters_global"
+        name: "Global Hezbollah Supporters"
+        estimated_subscribers: 67000
+      - username: "resistance_art_lb"
+        name: "Resistance Art & Culture"
+        estimated_subscribers: 39000
+      - username: "islamic_resistance_photos"
+        name: "IR Photo Archive"
+        estimated_subscribers: 55000
+      - username: "lebanese_shia_news"
+        name: "Lebanese Shia News"
+        estimated_subscribers: 82000
+      - username: "amal_hezbollah_alliance"
+        name: "Amal-Hezbollah Alliance"
+        estimated_subscribers: 48000
+
+    civilian_telegram:
+      - username: "lebanon_civilian_news"
+        name: "Lebanese Civilian News"
+        estimated_subscribers: 210000
+        notes: "Mixed sentiment — valuable for civilian opinion"
+      - username: "beirut_daily_ar"
+        name: "Beirut Daily Arabic"
+        estimated_subscribers: 175000
+      - username: "south_lb_civilians"
+        name: "South Lebanon Civilians"
+        estimated_subscribers: 93000
+      - username: "lb_political_debate"
+        name: "Lebanese Political Debate"
+        estimated_subscribers: 145000
+      - username: "lebanese_opposition"
+        name: "Lebanese Opposition Voice"
+        estimated_subscribers: 88000
+        notes: "Critical of Hezbollah — inverted sentiment signal"
+      - username: "lb_economy_crisis"
+        name: "Lebanon Economic Crisis"
+        estimated_subscribers: 220000
+      - username: "lb_diaspora_news"
+        name: "Lebanese Diaspora"
+        estimated_subscribers: 167000
+      - username: "march14_supporters"
+        name: "March 14 Supporters"
+        estimated_subscribers: 54000
+        notes: "Anti-Hezbollah; invert for threat assessment"
+      - username: "youth_lb_politics"
+        name: "Lebanese Youth Politics"
+        estimated_subscribers: 76000
+      - username: "nabatieh_locals"
+        name: "Nabatieh Locals Forum"
+        estimated_subscribers: 41000
+      - username: "tyr_community"
+        name: "Tyre Community"
+        estimated_subscribers: 38000
+      - username: "lb_shia_civilian_forum"
+        name: "Shia Civilian Forum"
+        estimated_subscribers: 62000
+
+    twitter_official:
+      - handle: "almanarnews"
+        name: "Al-Manar TV"
+        followers: 890000
+      - handle: "alahednews"
+        name: "Al-Ahed News"
+        followers: 340000
+      - handle: "moqawamaorg"
+        name: "Al-Moqawama"
+        followers: 210000
+
+    twitter_affiliated:
+      - handle: "IbnRochd"
+        name: "Arabic political analyst"
+        followers: 85000
+      - handle: "Lebanon_Pulse"
+        name: "Lebanon Pulse"
+        followers: 62000
+      - handle: "ResistanceNews_AR"
+        name: "Resistance News Arabic"
+        followers: 47000
+      - handle: "southlb_updates"
+        name: "South Lebanon Updates"
+        followers: 38000
+      - handle: "dahiya_pulse"
+        name: "Dahiya Pulse"
+        followers: 29000
+      - handle: "nasrallah_quotes_ar"
+        name: "Nasrallah Quotes"
+        followers: 54000
+
     keywords_ar:
       - "المقاومة الإسلامية"
       - "حزب الله"
       - "الضاحية الجنوبية"
-      - "بيروت"
       - "جنوب لبنان"
-      - "السيد حسن"
-      - "الوحدات"
-      - "المجاهدين"
-    keywords_en:
-      - "hezbollah"
-      - "islamic resistance lebanon"
-      - "nasrallah"
-      - "southern lebanon"
-    baseline_year: 2024
+      - "السيد حسن نصر الله"
+      - "نعيم قاسم"
+      - "هاشم صفي الدين"
+      - "كتائب المقاومة"
+      - "الحرب على لبنان"
+      - "الجبهة اللبنانية"
+      - "صمود المقاومة"
+      - "وحدة الساحات"
+      - "بيروت الجنوبية"
+      - "المجاهدون"
+      - "الجنوب اللبناني"
 
   irgc_iran:
     display_name: "Iran / IRGC"
     color: "#CC0000"
-    twitter_accounts:
-      - handle: "PressTV"
-        description: "PressTV (Iranian state media)"
-      - handle: "khamenei_ir"
-        description: "Khamenei official"
-      - handle: "iraniandiplomat"
-        description: "Iran MFA"
-      - handle: "tasnimnews_ar"
-        description: "Tasnim News Arabic"
-    telegram_channels:
+    baseline_year: 2024
+    target_sample_size: 10000
+
+    official_media:
+      - id: "presstv_ar"
+        name: "Press TV Arabic"
+        url: "https://www.presstv.ir/Arabic"
+        rss: "https://www.presstv.ir/Arabic/rss.xml"
+        language: ar
+        notes: "IRIB international Arabic broadcast"
+      - id: "irna_ar"
+        name: "IRNA Arabic"
+        url: "https://www.irna.ir/ar"
+        rss: "https://www.irna.ir/rss.xml?lng=3"
+        language: ar
+        notes: "Official Islamic Republic News Agency"
+      - id: "tasnim_ar"
+        name: "Tasnim Arabic"
+        url: "https://www.tasnimnews.com/ar"
+        rss: "https://www.tasnimnews.com/ar/rss"
+        language: ar
+        notes: "IRGC-affiliated news agency"
+      - id: "farsnews_ar"
+        name: "Fars News Arabic"
+        url: "https://www.farsnews.ir/ar"
+        rss: "https://www.farsnews.ir/ar/rss"
+        language: ar
+        notes: "IRGC-linked; aggressive anti-Israel/US stance"
+      - id: "alalam_news"
+        name: "Al-Alam TV"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss.xml"
+        language: ar
+        notes: "Iranian state Arabic-language TV"
+      - id: "irib_ar"
+        name: "IRIB Arabic"
+        url: "https://arabic.irib.ir"
+        rss: "https://arabic.irib.ir/rss"
+        language: ar
+        notes: "Islamic Republic of Iran Broadcasting, Arabic"
+      - id: "mehr_ar"
+        name: "Mehr News Arabic"
+        url: "https://ar.mehrnews.com"
+        rss: "https://ar.mehrnews.com/rss"
+        language: ar
+        notes: "Government news agency"
+      - id: "khamenei_official"
+        name: "Khamenei.ir Arabic"
+        url: "https://arabic.khamenei.ir"
+        rss: "https://arabic.khamenei.ir/rss"
+        language: ar
+        notes: "Supreme Leader official website"
+
+    official_telegram:
+      - username: "khamenei_ar"
+        name: "Khamenei Arabic"
+        estimated_subscribers: 890000
+      - username: "irgc_official_ar"
+        name: "IRGC Official Arabic"
+        estimated_subscribers: 620000
+      - username: "presstv_arabic"
+        name: "Press TV Arabic"
+        estimated_subscribers: 540000
       - username: "tasnim_ar"
-        description: "Tasnim Arabic"
-      - username: "irna_farsi"
-        description: "IRNA Persian"
-      - username: "iran_arabic_news"
-        description: "Iran Arabic news"
-      - username: "presstv_ar"
-        description: "PressTV Arabic"
+        name: "Tasnim Arabic"
+        estimated_subscribers: 480000
+      - username: "farsnews_arabic"
+        name: "Fars News Arabic"
+        estimated_subscribers: 370000
+      - username: "alalam_channel"
+        name: "Al-Alam TV"
+        estimated_subscribers: 430000
+      - username: "irna_arabic"
+        name: "IRNA Arabic"
+        estimated_subscribers: 295000
+      - username: "qods_force_ar"
+        name: "Quds Force Arabic"
+        estimated_subscribers: 510000
+      - username: "iran_mofa_ar"
+        name: "Iran MFA Arabic"
+        estimated_subscribers: 280000
+      - username: "mehr_ar"
+        name: "Mehr News Arabic"
+        estimated_subscribers: 210000
+
+    affiliated_telegram:
+      - username: "axis_resistance_ar"
+        name: "Axis of Resistance Arabic"
+        estimated_subscribers: 340000
+      - username: "iran_military_news"
+        name: "Iran Military News"
+        estimated_subscribers: 275000
+      - username: "islamic_revolution_ar"
+        name: "Islamic Revolution Arabic"
+        estimated_subscribers: 320000
+      - username: "wilayat_faqih_ar"
+        name: "Wilayat al-Faqih"
+        estimated_subscribers: 195000
+      - username: "iran_iraq_resistance"
+        name: "Iran-Iraq Resistance"
+        estimated_subscribers: 158000
+      - username: "basij_media"
+        name: "Basij Media"
+        estimated_subscribers: 230000
+      - username: "fatemiyon_brigade"
+        name: "Fatemiyon Brigade"
+        estimated_subscribers: 87000
+      - username: "zainabiyoun"
+        name: "Zainabiyoun Brigade"
+        estimated_subscribers: 65000
+      - username: "hashd_shaabi_ar"
+        name: "Hashd al-Shaabi Arabic"
+        estimated_subscribers: 195000
+      - username: "iran_proxy_news"
+        name: "Resistance Axis News"
+        estimated_subscribers: 145000
+      - username: "persian_gulf_news"
+        name: "Persian Gulf Region News"
+        estimated_subscribers: 112000
+
+    civilian_telegram:
+      - username: "iran_economy_ar"
+        name: "Iran Economy Watch"
+        estimated_subscribers: 380000
+        notes: "Economic grievances — high civilian sentiment value"
+      - username: "tehran_daily_ar"
+        name: "Tehran Daily Arabic"
+        estimated_subscribers: 220000
+      - username: "iran_protests_ar"
+        name: "Iran Protests Arabic"
+        estimated_subscribers: 175000
+        notes: "Documents anti-government activity"
+      - username: "iran_diaspora_news"
+        name: "Iranian Diaspora News"
+        estimated_subscribers: 290000
+      - username: "mahsa_movement"
+        name: "Mahsa Movement"
+        estimated_subscribers: 145000
+        notes: "Post-Mahsa Amini protest tracking"
+      - username: "iran_human_rights"
+        name: "Iran Human Rights Arabic"
+        estimated_subscribers: 98000
+      - username: "iran_youth_ar"
+        name: "Iranian Youth Voice"
+        estimated_subscribers: 132000
+      - username: "iran_inflation_ar"
+        name: "Iran Inflation Watch"
+        estimated_subscribers: 167000
+      - username: "tehran_streets"
+        name: "Tehran Streets"
+        estimated_subscribers: 88000
+      - username: "iran_opposition_ar"
+        name: "Iranian Opposition Arabic"
+        estimated_subscribers: 76000
+        notes: "Anti-regime; invert for threat assessment"
+      - username: "kurdish_iran_ar"
+        name: "Kurdish Iran Arabic"
+        estimated_subscribers: 54000
+      - username: "arabic_iran_civilians"
+        name: "Arab-Iranians Forum"
+        estimated_subscribers: 43000
+
+    twitter_official:
+      - handle: "khamenei_ir"
+        name: "Khamenei Official"
+        followers: 2100000
+      - handle: "IranMFA_Arabic"
+        name: "Iran MFA Arabic"
+        followers: 680000
+      - handle: "PressTV"
+        name: "Press TV"
+        followers: 1200000
+      - handle: "tasnimnews_ar"
+        name: "Tasnim Arabic"
+        followers: 430000
+
+    twitter_affiliated:
+      - handle: "FarsNewsAgency"
+        name: "Fars News"
+        followers: 890000
+      - handle: "AlAlamNews"
+        name: "Al-Alam TV"
+        followers: 540000
+      - handle: "MehrnewsAr"
+        name: "Mehr News Arabic"
+        followers: 320000
+      - handle: "iraniandiplomat"
+        name: "Iran Diplomat"
+        followers: 210000
+      - handle: "IRGCofficial_ar"
+        name: "IRGC Arabic"
+        followers: 380000
+      - handle: "IranRevolution_ar"
+        name: "Islamic Revolution"
+        followers: 165000
+
     keywords_ar:
-      - "الحرس الثوري"
-      - "الجمهورية الإسلامية"
+      - "الحرس الثوري الإيراني"
+      - "الجمهورية الإسلامية الإيرانية"
       - "ولي الفقيه"
       - "الثورة الإسلامية"
       - "خامنئي"
-      - "إيران"
-      - "باسدار"
-      - "الوحدة ضد الاستكبار"
-    keywords_en:
-      - "irgc"
-      - "iran revolutionary guard"
-      - "khamenei"
-      - "islamic republic iran"
-    baseline_year: 2024
+      - "فيلق القدس"
+      - "العقوبات على إيران"
+      - "الاقتصاد الإيراني"
+      - "الاحتجاجات الإيرانية"
+      - "محور المقاومة"
+      - "إيران ونووية"
+      - "الباسيج"
+      - "المرشد الأعلى"
+      - "بزشكيان"
+      - "إيران والسعودية"
 
   houthis:
     display_name: "Houthis / Ansar Allah"
-    color: "#006400"
-    twitter_accounts:
-      - handle: "ansarallah_media"
-        description: "Ansar Allah Media"
-      - handle: "al_masirah"
-        description: "Al-Masirah TV"
-      - handle: "saba_yemen"
-        description: "Saba News Agency (Houthi)"
-    telegram_channels:
+    color: "#4CAF50"
+    baseline_year: 2024
+    target_sample_size: 10000
+
+    official_media:
+      - id: "almasirah_tv"
+        name: "Al-Masirah TV"
+        url: "https://www.almasirah.net"
+        rss: "https://www.almasirah.net/rss.xml"
+        language: ar
+        notes: "Houthi state TV — primary broadcast"
+      - id: "saba_news"
+        name: "Saba News Agency"
+        url: "https://www.sabanews.net"
+        rss: "https://www.sabanews.net/rss.xml"
+        language: ar
+        notes: "Houthi state news agency"
+      - id: "yemenpost"
+        name: "Yemen Post (Houthi)"
+        url: "https://yemenpost.net"
+        rss: "https://yemenpost.net/feed"
+        language: ar
+      - id: "ansarallah_site"
+        name: "Ansar Allah Official"
+        url: "https://ansarallah.gov.ye"
+        rss: "https://ansarallah.gov.ye/rss"
+        language: ar
+        notes: "Movement's official website"
+      - id: "yemenalaraby"
+        name: "Yemen Al-Araby"
+        url: "https://yemenalaraby.com"
+        rss: "https://yemenalaraby.com/feed"
+        language: ar
+      - id: "al26sep"
+        name: "26 September Paper"
+        url: "https://www.26sep.net"
+        rss: "https://www.26sep.net/rss"
+        language: ar
+        notes: "Houthi-controlled former army newspaper"
+
+    official_telegram:
       - username: "ansarallah_media"
-        description: "Ansar Allah official"
+        name: "Ansar Allah Media Center"
+        estimated_subscribers: 680000
       - username: "almasirah_net"
-        description: "Al-Masirah TV"
-      - username: "houthi_military"
-        description: "Houthi military media"
-      - username: "yemen_resistance"
-        description: "Yemen resistance news"
+        name: "Al-Masirah TV"
+        estimated_subscribers: 920000
+      - username: "houthi_military_spokesman"
+        name: "Military Spokesman"
+        estimated_subscribers: 540000
+      - username: "yahya_sarea_official"
+        name: "Yahya Sarea (Military Spokesman)"
+        estimated_subscribers: 780000
+      - username: "ansarallah_political"
+        name: "Ansar Allah Political Bureau"
+        estimated_subscribers: 340000
+      - username: "sabanews_official"
+        name: "Saba News Official"
+        estimated_subscribers: 290000
+      - username: "houthi_naval_ops"
+        name: "Houthi Naval Operations"
+        estimated_subscribers: 410000
+      - username: "sanaa_gov_official"
+        name: "Sanaa Government"
+        estimated_subscribers: 230000
+      - username: "yemen_armed_forces_houthi"
+        name: "Yemen Armed Forces"
+        estimated_subscribers: 560000
+
+    affiliated_telegram:
+      - username: "redsea_operations_ar"
+        name: "Red Sea Operations"
+        estimated_subscribers: 380000
+        notes: "Houthi naval/drone ops against shipping"
+      - username: "ansarallah_supporters"
+        name: "Ansar Allah Supporters"
+        estimated_subscribers: 245000
+      - username: "yemen_jihad_ar"
+        name: "Yemen Jihad"
+        estimated_subscribers: 178000
+      - username: "houthi_drones_ar"
+        name: "Houthi Drone Operations"
+        estimated_subscribers: 320000
+      - username: "hodeidah_operations"
+        name: "Hodeidah Operations"
+        estimated_subscribers: 145000
+      - username: "sanaa_resistance"
+        name: "Sanaa Resistance"
+        estimated_subscribers: 190000
+      - username: "gulf_aden_updates"
+        name: "Gulf of Aden Updates"
+        estimated_subscribers: 215000
+      - username: "yemen_against_israel"
+        name: "Yemen Against Israel"
+        estimated_subscribers: 430000
+      - username: "houthi_media_ar"
+        name: "Houthi Media Arabic"
+        estimated_subscribers: 267000
+      - username: "ansarallah_khabar"
+        name: "Ansar Allah Khabar"
+        estimated_subscribers: 155000
+      - username: "zaydi_resistance"
+        name: "Zaydi Resistance"
+        estimated_subscribers: 92000
+
+    civilian_telegram:
+      - username: "yemen_civilians_ar"
+        name: "Yemeni Civilians"
+        estimated_subscribers: 290000
+        notes: "Mixed; humanitarian focus"
+      - username: "sanaa_daily_life"
+        name: "Sanaa Daily Life"
+        estimated_subscribers: 178000
+      - username: "yemen_famine_ar"
+        name: "Yemen Famine Watch"
+        estimated_subscribers: 215000
+        notes: "UNICEF/NGO-adjacent; negative humanitarian"
+      - username: "taiz_civilians"
+        name: "Taiz Civilians"
+        estimated_subscribers: 134000
+        notes: "Anti-Houthi; sieged city"
+      - username: "aden_news_ar"
+        name: "Aden News"
+        estimated_subscribers: 167000
+        notes: "IRG-controlled south; anti-Houthi"
+      - username: "yemen_opposition_ar"
+        name: "Yemen Opposition"
+        estimated_subscribers: 98000
+      - username: "hodeidah_locals"
+        name: "Hodeidah Locals"
+        estimated_subscribers: 85000
+      - username: "yemen_economy_collapse"
+        name: "Yemen Economy Collapse"
+        estimated_subscribers: 143000
+      - username: "marb_shabwah_news"
+        name: "Marib & Shabwah News"
+        estimated_subscribers: 76000
+      - username: "yemen_refugees_ar"
+        name: "Yemeni Refugees"
+        estimated_subscribers: 112000
+      - username: "ibb_dhamar_news"
+        name: "Ibb & Dhamar News"
+        estimated_subscribers: 67000
+
+    twitter_official:
+      - handle: "ansarallah_ye"
+        name: "Ansar Allah Official"
+        followers: 890000
+      - handle: "almasirah_tv"
+        name: "Al-Masirah TV"
+        followers: 670000
+      - handle: "yahyasarea"
+        name: "Yahya Sarea (Spokesman)"
+        followers: 1200000
+
+    twitter_affiliated:
+      - handle: "Yemen_War_Monitor"
+        name: "Yemen War Monitor"
+        followers: 340000
+      - handle: "AnsarAllah_Media"
+        name: "Ansar Allah Media"
+        followers: 280000
+      - handle: "HouthiMilitary"
+        name: "Houthi Military"
+        followers: 195000
+      - handle: "redsea_ar"
+        name: "Red Sea Arabic"
+        followers: 145000
+      - handle: "sanaa_resistance_tw"
+        name: "Sanaa Resistance TW"
+        followers: 87000
+
     keywords_ar:
       - "أنصار الله"
       - "الحوثيون"
       - "صنعاء"
-      - "اليمن"
-      - "الله أكبر الموت لأمريكا"
-      - "عمليات القوات المسلحة"
-      - "البحر الأحمر"
       - "عبد الملك الحوثي"
-    keywords_en:
-      - "houthi"
-      - "ansar allah"
-      - "yemen resistance"
-      - "red sea attacks"
-    baseline_year: 2024
+      - "يحيى السريع"
+      - "البحر الأحمر"
+      - "المسيّرات اليمنية"
+      - "عمليات في البحر الأحمر"
+      - "الصواريخ الباليستية اليمنية"
+      - "باب المندب"
+      - "الحرب على اليمن"
+      - "اليمن والمجاعة"
+      - "التحالف العربي واليمن"
+      - "الغارات الأمريكية على اليمن"
+      - "دعم غزة من اليمن"
 
   hamas_pij:
     display_name: "Hamas / PIJ"
-    color: "#2F4F4F"
-    twitter_accounts:
-      - handle: "hamasinfo"
-        description: "Hamas info (archived)"
-      - handle: "qassam_arabic"
-        description: "Al-Qassam Brigades"
-      - handle: "pij_media"
-        description: "Islamic Jihad media"
-    telegram_channels:
+    color: "#607D8B"
+    baseline_year: 2024
+    target_sample_size: 10000
+
+    official_media:
+      - id: "alaqsa_voice"
+        name: "Al-Aqsa Voice Radio"
+        url: "https://www.alaqsavoice.ps"
+        rss: "https://www.alaqsavoice.ps/rss.xml"
+        language: ar
+        notes: "Hamas radio — oldest media arm"
+      - id: "palinfo"
+        name: "Palestine Info"
+        url: "https://www.palinfo.com"
+        rss: "https://www.palinfo.com/rss"
+        language: ar
+        notes: "Hamas news portal"
+      - id: "alresalah_ps"
+        name: "Al-Resalah"
+        url: "https://www.alresalah.ps"
+        rss: "https://www.alresalah.ps/rss.xml"
+        language: ar
+        notes: "Hamas-affiliated newspaper"
+      - id: "qassam_info"
+        name: "Al-Qassam Website"
+        url: "https://www.qassam.ps"
+        rss: "https://www.qassam.ps/rss.xml"
+        language: ar
+        notes: "Al-Qassam Brigades official military communiqués"
+      - id: "islamic_jihad_ps"
+        name: "Islamic Jihad Palestine"
+        url: "https://www.islamic-jihad.net"
+        rss: "https://www.islamic-jihad.net/rss"
+        language: ar
+        notes: "PIJ official site"
+      - id: "saraya_quds"
+        name: "Saraya Al-Quds"
+        url: "https://www.sarayaalquds.net"
+        rss: "https://www.sarayaalquds.net/rss"
+        language: ar
+        notes: "PIJ military wing"
+
+    official_telegram:
       - username: "qassam_arabic"
-        description: "Al-Qassam Arabic"
-      - username: "hamas_info"
-        description: "Hamas official info"
-      - username: "saraya_alquds"
-        description: "Saraya Al-Quds (PIJ)"
-      - username: "gaza_resistance"
-        description: "Gaza resistance news"
+        name: "Al-Qassam Brigades Arabic"
+        estimated_subscribers: 1200000
+      - username: "hamasinfo_ar"
+        name: "Hamas Info Arabic"
+        estimated_subscribers: 890000
+      - username: "pij_official_ar"
+        name: "Islamic Jihad Official"
+        estimated_subscribers: 540000
+      - username: "saraya_alquds_ar"
+        name: "Saraya Al-Quds Arabic"
+        estimated_subscribers: 670000
+      - username: "hamas_political_bureau"
+        name: "Hamas Political Bureau"
+        estimated_subscribers: 420000
+      - username: "alaqsa_voice_tg"
+        name: "Al-Aqsa Voice Telegram"
+        estimated_subscribers: 310000
+      - username: "palinfo_channel"
+        name: "Palestine Info Channel"
+        estimated_subscribers: 380000
+      - username: "sinwar_quotes"
+        name: "Sinwar Statements Archive"
+        estimated_subscribers: 245000
+      - username: "hamas_military_intel"
+        name: "Hamas Military Reports"
+        estimated_subscribers: 580000
+      - username: "deif_brigade_news"
+        name: "Mohammed Deif Brigade"
+        estimated_subscribers: 340000
+
+    affiliated_telegram:
+      - username: "gaza_resistance_ar"
+        name: "Gaza Resistance Arabic"
+        estimated_subscribers: 780000
+      - username: "palestine_news_ar"
+        name: "Palestine News Arabic"
+        estimated_subscribers: 920000
+      - username: "alaqsa_flood_updates"
+        name: "Al-Aqsa Flood Updates"
+        estimated_subscribers: 1100000
+        notes: "Oct 7 follow-up and ongoing ops"
+      - username: "gaza_operations_ar"
+        name: "Gaza Operations"
+        estimated_subscribers: 650000
+      - username: "khan_younis_resistance"
+        name: "Khan Younis Resistance"
+        estimated_subscribers: 290000
+      - username: "jabalia_camp_news"
+        name: "Jabalia Camp News"
+        estimated_subscribers: 215000
+      - username: "rafah_resistance"
+        name: "Rafah Resistance"
+        estimated_subscribers: 340000
+      - username: "islamist_movements_ar"
+        name: "Islamist Movements Arabic"
+        estimated_subscribers: 180000
+      - username: "jerusalem_resistance"
+        name: "Jerusalem Resistance"
+        estimated_subscribers: 430000
+      - username: "westbank_operations"
+        name: "West Bank Operations"
+        estimated_subscribers: 267000
+      - username: "jenin_resistance"
+        name: "Jenin Resistance"
+        estimated_subscribers: 195000
+      - username: "tulkarm_nablus_ops"
+        name: "Tulkarm & Nablus Ops"
+        estimated_subscribers: 143000
+
+    civilian_telegram:
+      - username: "gaza_civilians_ar"
+        name: "Gaza Civilians"
+        estimated_subscribers: 580000
+        notes: "Raw civilian testimonies — highest intel value"
+      - username: "gaza_famine_ar"
+        name: "Gaza Famine Watch"
+        estimated_subscribers: 450000
+      - username: "gaza_hospitals_ar"
+        name: "Gaza Hospitals"
+        estimated_subscribers: 320000
+      - username: "gaza_displaced_ar"
+        name: "Gaza Displaced Persons"
+        estimated_subscribers: 285000
+      - username: "westbank_daily_ar"
+        name: "West Bank Daily Arabic"
+        estimated_subscribers: 210000
+      - username: "ramallah_news_ar"
+        name: "Ramallah News Arabic"
+        estimated_subscribers: 175000
+      - username: "palestine_diaspora_ar"
+        name: "Palestinian Diaspora"
+        estimated_subscribers: 390000
+      - username: "jerusalem_locals"
+        name: "Jerusalem Locals"
+        estimated_subscribers: 145000
+      - username: "nablus_jenin_civilians"
+        name: "Nablus-Jenin Civilians"
+        estimated_subscribers: 98000
+      - username: "gaza_youth_voices"
+        name: "Gaza Youth Voices"
+        estimated_subscribers: 167000
+      - username: "hamas_critics_ar"
+        name: "Hamas Critics Arabic"
+        estimated_subscribers: 87000
+        notes: "Palestinian critics of Hamas governance"
+      - username: "pa_vs_hamas_debate"
+        name: "PA vs Hamas Debate"
+        estimated_subscribers: 112000
+
+    twitter_official:
+      - handle: "HamasInfoEn"
+        name: "Hamas Info"
+        followers: 890000
+      - handle: "qassam_brigades"
+        name: "Al-Qassam Brigades"
+        followers: 1400000
+      - handle: "IslamicJihadPS"
+        name: "Islamic Jihad Palestine"
+        followers: 540000
+
+    twitter_affiliated:
+      - handle: "Gaza_Resistance"
+        name: "Gaza Resistance"
+        followers: 320000
+      - handle: "Palestine_updates_ar"
+        name: "Palestine Updates Arabic"
+        followers: 280000
+      - handle: "AlAqsaFlood_ar"
+        name: "Al-Aqsa Flood Arabic"
+        followers: 195000
+      - handle: "GazaOperations"
+        name: "Gaza Operations"
+        followers: 145000
+      - handle: "Jenin_resistance_ar"
+        name: "Jenin Resistance"
+        followers: 87000
+      - handle: "westbank_ops"
+        name: "West Bank Operations"
+        followers: 65000
+
     keywords_ar:
-      - "حماس"
-      - "الجهاد الإسلامي"
+      - "حماس وغزة"
       - "كتائب عز الدين القسام"
       - "سرايا القدس"
-      - "غزة"
+      - "طوفان الأقصى"
+      - "الجهاد الإسلامي الفلسطيني"
+      - "غزة تحت القصف"
+      - "المجزرة في غزة"
+      - "الإبادة الجماعية في غزة"
+      - "شهداء غزة"
+      - "مستشفيات غزة"
+      - "حصار غزة"
       - "المقاومة الفلسطينية"
+      - "رفح غزة"
+      - "جنين والضفة"
       - "يحيى السنوار"
-      - "محمد الضيف"
-    keywords_en:
-      - "hamas"
-      - "al-qassam"
-      - "islamic jihad palestine"
-      - "gaza resistance"
-    baseline_year: 2024
 
 ################################################################################
 # ANALYSIS PARAMETERS
 ################################################################################
 analysis:
-  sentiment_model: "UBC-NLP/MARBERTv2"
-  fallback_model: "aubmindlab/bert-base-arabertv02"
-  batch_size: 32
+  sentiment_model_primary: "CAMeL-Lab/bert-base-arabic-camelbert-mix-sentiment"
+  sentiment_model_fallback: "UBC-NLP/MARBERTv2"
+  sentiment_model_fallback2: "aubmindlab/bert-base-arabertv02"
+  batch_size: 64
   max_sequence_length: 512
-  languages: ["ar", "fa"]  # Arabic, Farsi
+  languages: ["ar", "fa"]
   min_text_length: 10
-  collection_window_days: 90  # rolling 90-day window
+  collection_window_days: 540  # 18 months for solid baseline
+  target_samples_per_group: 10000
+  target_samples_per_source_type: 2000
+
   baseline_period:
     start: "2024-01-01"
     end: "2024-12-31"
   comparison_period:
     start: "2025-01-01"
-    end: "2026-05-14"  # today
+    end: "2026-05-14"
 
-  # Intelligence themes to track
+  # Source divergence thresholds
+  # When official vs civilian sentiment diverges by this much, flag it
+  source_divergence_alert_threshold: 0.25
+
   themes:
     - id: "military_morale"
       label: "Military Morale"
-      keywords_ar: ["شهيد", "استشهد", "نصر", "هزيمة", "انتصار", "معنويات", "صمود", "مقاومة"]
-      keywords_en: ["martyr", "victory", "defeat", "resistance", "steadfast"]
+      keywords_ar: ["شهيد", "استشهد", "نصر", "هزيمة", "انتصار", "معنويات", "صمود", "مقاومة", "رباط", "بطولة", "كمين", "خسائر", "قتلى"]
+      keywords_en: ["martyr", "victory", "defeat", "resistance", "steadfast", "losses", "casualties"]
     - id: "civilian_support"
       label: "Civilian Support"
-      keywords_ar: ["الشعب", "مواطنون", "جماهير", "دعم", "تضامن", "احتجاج", "معارضة"]
-      keywords_en: ["people", "civilian", "support", "protest", "opposition"]
+      keywords_ar: ["الشعب", "مواطنون", "جماهير", "دعم", "تضامن", "احتجاج", "معارضة", "الرأي العام", "استطلاع", "ثقة", "شعبية"]
+      keywords_en: ["people", "civilian", "support", "protest", "opposition", "public opinion", "trust"]
     - id: "economic_hardship"
       label: "Economic Pressure"
-      keywords_ar: ["اقتصاد", "فقر", "غلاء", "عقوبات", "حصار", "تضخم", "بطالة"]
-      keywords_en: ["economy", "sanctions", "inflation", "poverty", "blockade"]
+      keywords_ar: ["اقتصاد", "فقر", "غلاء", "عقوبات", "حصار", "تضخم", "بطالة", "ارتفاع الأسعار", "الليرة", "الريال", "الدولار", "أزمة"]
+      keywords_en: ["economy", "sanctions", "inflation", "poverty", "blockade", "unemployment", "crisis"]
     - id: "military_operations"
       label: "Military Operations"
-      keywords_ar: ["عملية", "هجوم", "قصف", "صاروخ", "طائرة مسيّرة", "دفاع", "ميليشيا"]
-      keywords_en: ["operation", "attack", "missile", "drone", "airstrike", "defense"]
+      keywords_ar: ["عملية عسكرية", "هجوم", "قصف", "صاروخ", "طائرة مسيّرة", "دفاع جوي", "كمين", "تفجير", "اشتباك", "معركة"]
+      keywords_en: ["operation", "attack", "missile", "drone", "airstrike", "ambush", "battle", "strike"]
     - id: "leadership_trust"
       label: "Leadership Trust"
-      keywords_ar: ["قيادة", "ثقة", "قرار", "فساد", "خيانة", "إخلاص", "بيعة"]
-      keywords_en: ["leadership", "trust", "decision", "corruption", "loyalty"]
+      keywords_ar: ["قيادة", "ثقة", "قرار", "فساد", "خيانة", "إخلاص", "بيعة", "انتقاد", "محاسبة", "الأمين العام"]
+      keywords_en: ["leadership", "trust", "decision", "corruption", "loyalty", "accountability", "criticism"]
     - id: "international_relations"
       label: "International Relations"
-      keywords_ar: ["إيران", "روسيا", "الصين", "أمريكا", "إسرائيل", "تحالف", "دبلوماسية"]
-      keywords_en: ["iran", "russia", "china", "america", "israel", "alliance"]
+      keywords_ar: ["إيران", "روسيا", "الصين", "أمريكا", "إسرائيل", "تحالف", "دبلوماسية", "اتفاقية", "معاهدة", "محادثات"]
+      keywords_en: ["iran", "russia", "china", "america", "israel", "alliance", "diplomacy", "agreement"]
+    - id: "propaganda_intensity"
+      label: "Propaganda Intensity"
+      keywords_ar: ["الإعلام", "رواية", "حرب المعلومات", "تضليل", "دعاية", "إشاعة", "تأطير", "خطاب"]
+      keywords_en: ["media", "narrative", "information war", "disinformation", "propaganda", "framing"]
+    - id: "humanitarian"
+      label: "Humanitarian Conditions"
+      keywords_ar: ["مجاعة", "نزوح", "لاجئون", "جرحى", "مستشفى", "دواء", "غذاء", "ماء", "مساعدات", "كارثة إنسانية"]
+      keywords_en: ["famine", "displacement", "refugees", "injured", "hospital", "medicine", "food", "aid"]
