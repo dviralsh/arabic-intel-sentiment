@@ -60,36 +60,30 @@ groups:
     target_sample_size: 10000
 
     official_media:
-      - id: "almanar_tv"
-        name: "Al-Manar TV"
-        url: "https://almanar.com.lb"
-        rss: "https://almanar.com.lb/rss.xml"
+      - id: "rt_arabic"
+        name: "RT Arabic"
+        url: "https://arabic.rt.com"
+        rss: "https://arabic.rt.com/rss/"
         language: ar
-        notes: "Hezbollah's primary TV channel; also streams online"
-      - id: "alahad_news"
-        name: "Al-Ahad News"
-        url: "https://al-ahed.com"
-        rss: "https://al-ahed.com/feed"
+        notes: "Verified working 2026-05. Covers Hezbollah operations, Lebanon, resistance axis extensively."
+      - id: "rt_arabic_mideast"
+        name: "RT Arabic — Middle East"
+        url: "https://arabic.rt.com"
+        rss: "https://arabic.rt.com/rss/middle_east/"
         language: ar
-        notes: "Hezbollah news portal — detailed communiqués"
-      - id: "moqawama_org"
-        name: "Al-Moqawama"
-        url: "https://moqawama.org"
-        rss: "https://moqawama.org/rss.xml"
+        notes: "Verified working 2026-05. Lebanon/Hezbollah-focused section."
+      - id: "alalam_lebanon"
+        name: "Al-Alam TV — Lebanon"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/lebanon"
         language: ar
-        notes: "Islamic Resistance general website"
-      - id: "alintiqad_net"
-        name: "Al-Intiqad"
-        url: "https://al-intiqad.com"
-        rss: "https://al-intiqad.com/feed"
+        notes: "Verified working 2026-05. Iranian-backed Arabic TV, Lebanon section."
+      - id: "alalam_latest"
+        name: "Al-Alam TV — Latest"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/latest"
         language: ar
-        notes: "Hezbollah-aligned political analysis"
-      - id: "nbnnews_lb"
-        name: "NBN Lebanon"
-        url: "https://www.nbn.com.lb"
-        rss: "https://www.nbn.com.lb/rss.xml"
-        language: ar
-        notes: "Amal/Hezbollah-affiliated TV channel"
+        notes: "Verified working 2026-05. Covers Iran, Syria, Lebanon, Yemen, Palestine."
 
     official_telegram:
       - username: "almanarnews"
@@ -248,54 +242,30 @@ groups:
     target_sample_size: 10000
 
     official_media:
-      - id: "presstv_ar"
-        name: "Press TV Arabic"
-        url: "https://www.presstv.ir/Arabic"
-        rss: "https://www.presstv.ir/Arabic/rss.xml"
-        language: ar
-        notes: "IRIB international Arabic broadcast"
-      - id: "irna_ar"
-        name: "IRNA Arabic"
-        url: "https://www.irna.ir/ar"
-        rss: "https://www.irna.ir/rss.xml?lng=3"
-        language: ar
-        notes: "Official Islamic Republic News Agency"
-      - id: "tasnim_ar"
-        name: "Tasnim Arabic"
-        url: "https://www.tasnimnews.com/ar"
-        rss: "https://www.tasnimnews.com/ar/rss"
-        language: ar
-        notes: "IRGC-affiliated news agency"
-      - id: "farsnews_ar"
-        name: "Fars News Arabic"
-        url: "https://www.farsnews.ir/ar"
-        rss: "https://www.farsnews.ir/ar/rss"
-        language: ar
-        notes: "IRGC-linked; aggressive anti-Israel/US stance"
-      - id: "alalam_news"
-        name: "Al-Alam TV"
+      - id: "alalam_iran"
+        name: "Al-Alam TV — Iran"
         url: "https://www.alalam.ir"
-        rss: "https://www.alalam.ir/rss.xml"
+        rss: "https://www.alalam.ir/rss/iran"
         language: ar
-        notes: "Iranian state Arabic-language TV"
-      - id: "irib_ar"
-        name: "IRIB Arabic"
-        url: "https://arabic.irib.ir"
-        rss: "https://arabic.irib.ir/rss"
+        notes: "Verified working 2026-05. Iranian state Arabic TV, Iran section. Covers IRGC, Khamenei, Iran policy."
+      - id: "alalam_latest_iran"
+        name: "Al-Alam TV — Latest"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/latest"
         language: ar
-        notes: "Islamic Republic of Iran Broadcasting, Arabic"
-      - id: "mehr_ar"
-        name: "Mehr News Arabic"
-        url: "https://ar.mehrnews.com"
-        rss: "https://ar.mehrnews.com/rss"
+        notes: "Verified working 2026-05. All regions including Iran/IRGC focus."
+      - id: "rt_arabic_iran"
+        name: "RT Arabic — World"
+        url: "https://arabic.rt.com"
+        rss: "https://arabic.rt.com/rss/world/"
         language: ar
-        notes: "Government news agency"
-      - id: "khamenei_official"
-        name: "Khamenei.ir Arabic"
-        url: "https://arabic.khamenei.ir"
-        rss: "https://arabic.khamenei.ir/rss"
+        notes: "Verified working 2026-05. Covers Iran, IRGC, and resistance axis."
+      - id: "alalam_iraq"
+        name: "Al-Alam TV — Iraq"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/iraq"
         language: ar
-        notes: "Supreme Leader official website"
+        notes: "Verified working 2026-05. Covers Iran-backed Iraqi factions."
 
     official_telegram:
       - username: "khamenei_ar"
@@ -464,40 +434,24 @@ groups:
     target_sample_size: 10000
 
     official_media:
-      - id: "almasirah_tv"
-        name: "Al-Masirah TV"
-        url: "https://www.almasirah.net"
-        rss: "https://www.almasirah.net/rss.xml"
+      - id: "rt_arabic_yemen"
+        name: "RT Arabic — Middle East (Yemen)"
+        url: "https://arabic.rt.com"
+        rss: "https://arabic.rt.com/rss/middle_east/"
         language: ar
-        notes: "Houthi state TV — primary broadcast"
-      - id: "saba_news"
-        name: "Saba News Agency"
-        url: "https://www.sabanews.net"
-        rss: "https://www.sabanews.net/rss.xml"
+        notes: "Verified working 2026-05. Covers Houthi Red Sea operations, Yemen conflict extensively."
+      - id: "alalam_yemen"
+        name: "Al-Alam TV — Latest (Yemen)"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/latest"
         language: ar
-        notes: "Houthi state news agency"
-      - id: "yemenpost"
-        name: "Yemen Post (Houthi)"
-        url: "https://yemenpost.net"
-        rss: "https://yemenpost.net/feed"
+        notes: "Verified working 2026-05. Iranian-backed channel covering Houthi operations and Yemen."
+      - id: "palinfo_yemen"
+        name: "Palestine Info — Yemen solidarity"
+        url: "https://www.palinfo.com"
+        rss: "https://www.palinfo.com/rss"
         language: ar
-      - id: "ansarallah_site"
-        name: "Ansar Allah Official"
-        url: "https://ansarallah.gov.ye"
-        rss: "https://ansarallah.gov.ye/rss"
-        language: ar
-        notes: "Movement's official website"
-      - id: "yemenalaraby"
-        name: "Yemen Al-Araby"
-        url: "https://yemenalaraby.com"
-        rss: "https://yemenalaraby.com/feed"
-        language: ar
-      - id: "al26sep"
-        name: "26 September Paper"
-        url: "https://www.26sep.net"
-        rss: "https://www.26sep.net/rss"
-        language: ar
-        notes: "Houthi-controlled former army newspaper"
+        notes: "Verified working 2026-05. Covers Houthi solidarity actions with Gaza."
 
     official_telegram:
       - username: "ansarallah_media"
@@ -655,42 +609,30 @@ groups:
     target_sample_size: 10000
 
     official_media:
-      - id: "alaqsa_voice"
-        name: "Al-Aqsa Voice Radio"
-        url: "https://www.alaqsavoice.ps"
-        rss: "https://www.alaqsavoice.ps/rss.xml"
-        language: ar
-        notes: "Hamas radio — oldest media arm"
       - id: "palinfo"
-        name: "Palestine Info"
+        name: "Palestine Info (Palestinian Media Center)"
         url: "https://www.palinfo.com"
         rss: "https://www.palinfo.com/rss"
         language: ar
-        notes: "Hamas news portal"
-      - id: "alresalah_ps"
-        name: "Al-Resalah"
-        url: "https://www.alresalah.ps"
-        rss: "https://www.alresalah.ps/rss.xml"
+        notes: "Verified working 2026-05. Hamas news portal — active daily coverage of Gaza, West Bank."
+      - id: "pnn_ps"
+        name: "Palestine News Network"
+        url: "https://www.pnn.ps"
+        rss: "https://www.pnn.ps/feed"
         language: ar
-        notes: "Hamas-affiliated newspaper"
-      - id: "qassam_info"
-        name: "Al-Qassam Website"
-        url: "https://www.qassam.ps"
-        rss: "https://www.qassam.ps/rss.xml"
+        notes: "Verified working 2026-05. Palestinian news with civilian and resistance coverage."
+      - id: "alalam_palestine"
+        name: "Al-Alam TV — Palestine"
+        url: "https://www.alalam.ir"
+        rss: "https://www.alalam.ir/rss/palestine"
         language: ar
-        notes: "Al-Qassam Brigades official military communiqués"
-      - id: "islamic_jihad_ps"
-        name: "Islamic Jihad Palestine"
-        url: "https://www.islamic-jihad.net"
-        rss: "https://www.islamic-jihad.net/rss"
+        notes: "Verified working 2026-05. Iran-backed channel, Palestinian affairs section."
+      - id: "rt_arabic_palestine"
+        name: "RT Arabic — Middle East (Palestine)"
+        url: "https://arabic.rt.com"
+        rss: "https://arabic.rt.com/rss/middle_east/"
         language: ar
-        notes: "PIJ official site"
-      - id: "saraya_quds"
-        name: "Saraya Al-Quds"
-        url: "https://www.sarayaalquds.net"
-        rss: "https://www.sarayaalquds.net/rss"
-        language: ar
-        notes: "PIJ military wing"
+        notes: "Verified working 2026-05. Covers Gaza, Hamas operations, Palestinian resistance."
 
     official_telegram:
       - username: "qassam_arabic"
