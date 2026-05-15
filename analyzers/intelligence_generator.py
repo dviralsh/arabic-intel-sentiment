@@ -190,6 +190,8 @@ class IntelligenceGenerator:
         if df.empty:
             return {}
         df2 = df.copy()
+        df2["timestamp"] = pd.to_datetime(df2["timestamp"], utc=True, errors="coerce")
+        df2 = df2.dropna(subset=["timestamp"])
         df2["month"] = df2["timestamp"].dt.to_period("M").astype(str)
         sign_map = {"positive": 1.0, "negative": -1.0, "neutral": 0.0}
         df2["sign"] = df2["sentiment"].map(sign_map).fillna(0.0)
@@ -211,6 +213,8 @@ class IntelligenceGenerator:
         if df.empty:
             return {}
         df2 = df.copy()
+        df2["timestamp"] = pd.to_datetime(df2["timestamp"], utc=True, errors="coerce")
+        df2 = df2.dropna(subset=["timestamp"])
         df2["month"] = df2["timestamp"].dt.to_period("M").astype(str)
         sign_map = {"positive": 1.0, "negative": -1.0, "neutral": 0.0}
         df2["sign"] = df2["sentiment"].map(sign_map).fillna(0.0)

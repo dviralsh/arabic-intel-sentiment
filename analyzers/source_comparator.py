@@ -305,6 +305,8 @@ class SourceComparator:
 
     def _build_source_timeline(self, df: pd.DataFrame) -> dict[str, list[dict]]:
         df = df.copy()
+        df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True, errors="coerce")
+        df = df.dropna(subset=["timestamp"])
         df["month"] = df["timestamp"].dt.to_period("M").astype(str)
         timeline: dict[str, list[dict]] = {}
         for st in df["source_type"].unique():
