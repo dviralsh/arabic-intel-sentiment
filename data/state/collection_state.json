@@ -2,16 +2,16 @@
   "schema_version": 2,
   "sources": {
     "rss_hezbollah": {
-      "last_post_id": "rss_rt_arabic_mideast_c24d802860",
-      "last_timestamp": "2026-05-21T07:57:48+00:00",
-      "total_collected": 1044,
-      "last_run": "2026-05-21T08:00:05.234424+00:00"
+      "last_post_id": "rss_rt_arabic_cb745a67d0",
+      "last_timestamp": "2026-05-22T07:50:18+00:00",
+      "total_collected": 1143,
+      "last_run": "2026-05-22T07:52:04.316470+00:00"
     },
     "rss_hamas_pij": {
-      "last_post_id": "rss_rt_arabic_palestine_c24d802860",
-      "last_timestamp": "2026-05-21T07:57:48+00:00",
-      "total_collected": 567,
-      "last_run": "2026-05-21T08:00:38.316711+00:00"
+      "last_post_id": "rss_rt_arabic_palestine_1dd2c0dbd5",
+      "last_timestamp": "2026-05-22T05:53:49+00:00",
+      "total_collected": 637,
+      "last_run": "2026-05-22T07:52:53.506735+00:00"
     },
     "rss_irgc_iran": {
       "last_post_id": "rss_rt_arabic_iran_00fcad3c71",
@@ -31,12 +31,12 @@
       "hezbollah": 1
     },
     "2026_05": {
-      "hamas_pij": 487,
-      "hezbollah": 970,
+      "hamas_pij": 545,
+      "hezbollah": 1069,
       "irgc_iran": 349,
       "houthis": 344
     }
   },
-  "total_posts": 2151,
+  "total_posts": 2308,
   "last_full_run": null
 }
