@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-19T09:11:39.242723+00:00",
+    "generated_at": "2026-06-20T07:57:24.290176+00:00",
     "baseline_period": {
       "start": "2024-01-01T00:00:00+00:00",
       "end": "2024-12-31T23:59:59+00:00",
@@ -8,10 +8,10 @@
     },
     "current_period": {
       "start": "2025-01-01T00:00:00+00:00",
-      "end": "2026-06-19T09:10:40.874647+00:00",
+      "end": "2026-06-20T07:56:09.894085+00:00",
       "label": "Current (2025–2026)"
     },
-    "total_posts_analyzed": 337,
+    "total_posts_analyzed": 339,
     "groups": [
       "hezbollah",
       "irgc_iran",
@@ -19,12 +19,12 @@
       "hamas_pij"
     ],
     "collection_stats": {
-      "total_posts": 10667,
+      "total_posts": 10971,
       "by_group": {
-        "hezbollah": 4898,
-        "hamas_pij": 2382,
-        "irgc_iran": 1739,
-        "houthis": 1648
+        "hezbollah": 5036,
+        "hamas_pij": 2450,
+        "irgc_iran": 1789,
+        "houthis": 1696
       },
       "months_covered": [
         "2024_05",
@@ -35,49 +35,49 @@
     }
   },
   "summary": {
-    "total_posts": 337,
+    "total_posts": 339,
     "platforms": {
-      "rss": 337
+      "rss": 339
     },
     "groups": {
       "hezbollah": {
         "display_name": "Hezbollah",
         "color": "#FFD700",
-        "post_count": 148,
-        "avg_sentiment_score": -0.131,
-        "positive_pct": 5.4,
-        "negative_pct": 22.3,
-        "neutral_pct": 72.3,
+        "post_count": 149,
+        "avg_sentiment_score": -0.211,
+        "positive_pct": 7.4,
+        "negative_pct": 32.2,
+        "neutral_pct": 60.4,
         "platforms": {
-          "rss": 148
+          "rss": 149
         },
         "source_types": {
-          "unknown": 148
+          "unknown": 149
         }
       },
       "irgc_iran": {
         "display_name": "Iran / IRGC",
         "color": "#CC0000",
-        "post_count": 49,
-        "avg_sentiment_score": -0.188,
-        "positive_pct": 0.0,
-        "negative_pct": 26.5,
-        "neutral_pct": 73.5,
+        "post_count": 50,
+        "avg_sentiment_score": -0.233,
+        "positive_pct": 4.0,
+        "negative_pct": 30.0,
+        "neutral_pct": 66.0,
         "platforms": {
-          "rss": 49
+          "rss": 50
         },
         "source_types": {
-          "unknown": 49
+          "unknown": 50
         }
       },
       "houthis": {
         "display_name": "Houthis / Ansar Allah",
         "color": "#4CAF50",
         "post_count": 60,
-        "avg_sentiment_score": -0.275,
-        "positive_pct": 0.0,
-        "negative_pct": 35.0,
-        "neutral_pct": 65.0,
+        "avg_sentiment_score": -0.371,
+        "positive_pct": 1.7,
+        "negative_pct": 46.7,
+        "neutral_pct": 51.7,
         "platforms": {
           "rss": 60
         },
@@ -89,10 +89,10 @@
         "display_name": "Hamas / PIJ",
         "color": "#607D8B",
         "post_count": 80,
-        "avg_sentiment_score": -0.246,
+        "avg_sentiment_score": -0.345,
         "positive_pct": 2.5,
-        "negative_pct": 33.8,
-        "neutral_pct": 63.7,
+        "negative_pct": 45.0,
+        "neutral_pct": 52.5,
         "platforms": {
           "rss": 80
         },
