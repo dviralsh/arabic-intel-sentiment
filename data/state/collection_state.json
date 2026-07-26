@@ -2,28 +2,28 @@
   "schema_version": 2,
   "sources": {
     "rss_hezbollah": {
-      "last_post_id": "rss_rt_arabic_mideast_6242954a5f",
-      "last_timestamp": "2026-07-25T06:07:27+00:00",
-      "total_collected": 10613,
-      "last_run": "2026-07-25T06:23:18.906012+00:00"
+      "last_post_id": "rss_rt_arabic_mideast_f6f675d855",
+      "last_timestamp": "2026-07-26T05:37:36+00:00",
+      "total_collected": 10763,
+      "last_run": "2026-07-26T06:42:19.289227+00:00"
     },
     "rss_hamas_pij": {
-      "last_post_id": "rss_rt_arabic_palestine_6242954a5f",
-      "last_timestamp": "2026-07-25T06:01:34+00:00",
-      "total_collected": 5594,
-      "last_run": "2026-07-25T06:23:49.109579+00:00"
+      "last_post_id": "rss_rt_arabic_palestine_f6f675d855",
+      "last_timestamp": "2026-07-26T09:37:00+03:00",
+      "total_collected": 5674,
+      "last_run": "2026-07-26T06:42:48.758849+00:00"
     },
     "rss_irgc_iran": {
-      "last_post_id": "rss_rt_arabic_iran_df517a8af3",
-      "last_timestamp": "2026-07-25T06:06:03+00:00",
-      "total_collected": 3488,
-      "last_run": "2026-07-25T06:23:27.308802+00:00"
+      "last_post_id": "rss_rt_arabic_iran_1ac4def727",
+      "last_timestamp": "2026-07-26T05:37:36+00:00",
+      "total_collected": 3538,
+      "last_run": "2026-07-26T06:42:27.634245+00:00"
     },
     "rss_houthis": {
-      "last_post_id": "rss_palinfo_yemen_0027077e0e",
-      "last_timestamp": "2026-07-25T06:01:34+00:00",
-      "total_collected": 4143,
-      "last_run": "2026-07-25T06:23:36.595446+00:00"
+      "last_post_id": "rss_palinfo_yemen_8cc04aa53a",
+      "last_timestamp": "2026-07-26T05:56:17+00:00",
+      "total_collected": 4203,
+      "last_run": "2026-07-26T06:42:36.612040+00:00"
     }
   },
   "partitions": {
@@ -43,12 +43,12 @@
       "hamas_pij": 1991
     },
     "2026_07": {
-      "hezbollah": 3451,
-      "irgc_iran": 1229,
-      "houthis": 1223,
-      "hamas_pij": 1706
+      "hezbollah": 3594,
+      "irgc_iran": 1279,
+      "houthis": 1275,
+      "hamas_pij": 1778
     }
   },
-  "total_posts": 21571,
+  "total_posts": 21888,
   "last_full_run": null
 }
