@@ -2,28 +2,28 @@
   "schema_version": 2,
   "sources": {
     "rss_hezbollah": {
-      "last_post_id": "rss_rt_arabic_mideast_4e0ff53f79",
-      "last_timestamp": "2026-09-05T08:08:22+00:00",
-      "total_collected": 16512,
-      "last_run": "2026-09-05T08:14:39.346729+00:00"
+      "last_post_id": "rss_rt_arabic_mideast_b42ba6eb21",
+      "last_timestamp": "2026-09-06T08:24:56+00:00",
+      "total_collected": 16662,
+      "last_run": "2026-09-06T08:32:02.836405+00:00"
     },
     "rss_hamas_pij": {
-      "last_post_id": "rss_rt_arabic_palestine_4e0ff53f79",
-      "last_timestamp": "2026-09-05T11:09:00+03:00",
-      "total_collected": 8774,
-      "last_run": "2026-09-05T08:15:11.236163+00:00"
+      "last_post_id": "rss_rt_arabic_palestine_b42ba6eb21",
+      "last_timestamp": "2026-09-06T11:15:00+03:00",
+      "total_collected": 8854,
+      "last_run": "2026-09-06T08:32:34.970545+00:00"
     },
     "rss_irgc_iran": {
-      "last_post_id": "rss_rt_arabic_iran_11661501a7",
-      "last_timestamp": "2026-09-05T08:05:33+00:00",
-      "total_collected": 5387,
-      "last_run": "2026-09-05T08:14:48.600346+00:00"
+      "last_post_id": "rss_rt_arabic_iran_247fd2b36b",
+      "last_timestamp": "2026-09-06T07:57:05+00:00",
+      "total_collected": 5437,
+      "last_run": "2026-09-06T08:32:12.086650+00:00"
     },
     "rss_houthis": {
-      "last_post_id": "rss_palinfo_yemen_6b496ecc51",
-      "last_timestamp": "2026-09-05T07:42:07+00:00",
-      "total_collected": 6453,
-      "last_run": "2026-09-05T08:14:58.214271+00:00"
+      "last_post_id": "rss_palinfo_yemen_b795bf8a7c",
+      "last_timestamp": "2026-09-06T08:11:48+00:00",
+      "total_collected": 6513,
+      "last_run": "2026-09-06T08:32:21.798923+00:00"
     }
   },
   "partitions": {
@@ -55,12 +55,12 @@
       "hamas_pij": 2032
     },
     "2026_09": {
-      "hezbollah": 620,
-      "irgc_iran": 227,
-      "houthis": 203,
-      "hamas_pij": 303
+      "hezbollah": 755,
+      "irgc_iran": 277,
+      "houthis": 248,
+      "hamas_pij": 368
     }
   },
-  "total_posts": 33975,
+  "total_posts": 34270,
   "last_full_run": null
 }
