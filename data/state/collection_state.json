@@ -2,28 +2,28 @@
   "schema_version": 2,
   "sources": {
     "rss_hezbollah": {
-      "last_post_id": "rss_rt_arabic_mideast_467bdc7555",
-      "last_timestamp": "2026-10-09T11:12:07+00:00",
-      "total_collected": 21160,
-      "last_run": "2026-10-09T11:14:25.653558+00:00"
+      "last_post_id": "rss_rt_arabic_mideast_ca0133b621",
+      "last_timestamp": "2026-10-10T10:30:36+00:00",
+      "total_collected": 21310,
+      "last_run": "2026-10-10T10:31:27.514673+00:00"
     },
     "rss_hamas_pij": {
-      "last_post_id": "rss_rt_arabic_palestine_467bdc7555",
-      "last_timestamp": "2026-10-09T10:45:09+00:00",
-      "total_collected": 11283,
-      "last_run": "2026-10-09T11:14:56.699311+00:00"
+      "last_post_id": "rss_rt_arabic_palestine_ca0133b621",
+      "last_timestamp": "2026-10-10T10:30:36+00:00",
+      "total_collected": 11363,
+      "last_run": "2026-10-10T10:31:55.687780+00:00"
     },
     "rss_irgc_iran": {
-      "last_post_id": "rss_rt_arabic_iran_cb6fe8f55c",
-      "last_timestamp": "2026-10-09T10:43:53+00:00",
-      "total_collected": 6887,
-      "last_run": "2026-10-09T11:14:35.787902+00:00"
+      "last_post_id": "rss_rt_arabic_iran_36cc1fb223",
+      "last_timestamp": "2026-10-10T10:27:32+00:00",
+      "total_collected": 6937,
+      "last_run": "2026-10-10T10:31:36.623679+00:00"
     },
     "rss_houthis": {
-      "last_post_id": "rss_palinfo_yemen_2eab72c6dc",
-      "last_timestamp": "2026-10-09T10:45:09+00:00",
-      "total_collected": 8322,
-      "last_run": "2026-10-09T11:14:45.063851+00:00"
+      "last_post_id": "rss_palinfo_yemen_3559a12c50",
+      "last_timestamp": "2026-10-10T10:30:36+00:00",
+      "total_collected": 8382,
+      "last_run": "2026-10-10T10:31:44.618795+00:00"
     }
   },
   "partitions": {
@@ -61,12 +61,12 @@
       "hamas_pij": 1938
     },
     "2026_10": {
-      "hezbollah": 1290,
-      "irgc_iran": 429,
-      "houthis": 485,
-      "hamas_pij": 655
+      "hezbollah": 1436,
+      "irgc_iran": 479,
+      "houthis": 541,
+      "hamas_pij": 731
     }
   },
-  "total_posts": 43852,
+  "total_posts": 44180,
   "last_full_run": null
 }
