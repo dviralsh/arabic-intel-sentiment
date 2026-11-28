@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-27T13:41:43.885626+00:00",
+    "generated_at": "2026-11-28T12:52:42.027012+00:00",
     "baseline_period": {
       "start": "2024-01-01T00:00:00+00:00",
       "end": "2024-12-31T23:59:59+00:00",
@@ -8,7 +8,7 @@
     },
     "current_period": {
       "start": "2025-01-01T00:00:00+00:00",
-      "end": "2026-11-27T13:40:27.271250+00:00",
+      "end": "2026-11-28T12:51:36.048342+00:00",
       "label": "Current (2025–2026)"
     },
     "total_posts_analyzed": 340,
@@ -19,12 +19,12 @@
       "hamas_pij"
     ],
     "collection_stats": {
-      "total_posts": 58348,
+      "total_posts": 58649,
       "by_group": {
-        "hezbollah": 26393,
-        "hamas_pij": 13245,
-        "irgc_iran": 9276,
-        "houthis": 9434
+        "hezbollah": 26530,
+        "hamas_pij": 13312,
+        "irgc_iran": 9326,
+        "houthis": 9481
       },
       "months_covered": [
         "2024_05",
@@ -49,10 +49,10 @@
         "display_name": "Hezbollah",
         "color": "#FFD700",
         "post_count": 150,
-        "avg_sentiment_score": -0.091,
-        "positive_pct": 8.7,
-        "negative_pct": 19.3,
-        "neutral_pct": 72.0,
+        "avg_sentiment_score": -0.183,
+        "positive_pct": 5.3,
+        "negative_pct": 28.7,
+        "neutral_pct": 66.0,
         "platforms": {
           "rss": 150
         },
@@ -64,10 +64,10 @@
         "display_name": "Iran / IRGC",
         "color": "#CC0000",
         "post_count": 50,
-        "avg_sentiment_score": -0.126,
+        "avg_sentiment_score": -0.157,
         "positive_pct": 4.0,
-        "negative_pct": 20.0,
-        "neutral_pct": 76.0,
+        "negative_pct": 26.0,
+        "neutral_pct": 70.0,
         "platforms": {
           "rss": 50
         },
@@ -79,10 +79,10 @@
         "display_name": "Houthis / Ansar Allah",
         "color": "#4CAF50",
         "post_count": 60,
-        "avg_sentiment_score": -0.194,
-        "positive_pct": 6.7,
-        "negative_pct": 28.3,
-        "neutral_pct": 65.0,
+        "avg_sentiment_score": -0.241,
+        "positive_pct": 3.3,
+        "negative_pct": 33.3,
+        "neutral_pct": 63.3,
         "platforms": {
           "rss": 60
         },
@@ -94,10 +94,10 @@
         "display_name": "Hamas / PIJ",
         "color": "#607D8B",
         "post_count": 80,
-        "avg_sentiment_score": -0.234,
-        "positive_pct": 7.5,
-        "negative_pct": 36.2,
-        "neutral_pct": 56.2,
+        "avg_sentiment_score": -0.247,
+        "positive_pct": 2.5,
+        "negative_pct": 33.8,
+        "neutral_pct": 63.7,
         "platforms": {
           "rss": 80
         },
